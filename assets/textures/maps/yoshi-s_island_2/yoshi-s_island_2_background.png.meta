@@ -1,0 +1,36 @@
+{
+  "ver": "2.3.5",
+  "uuid": "f694556c-898d-4265-9efb-3223b35e29d3",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 512,
+  "height": 432,
+  "platformSettings": {},
+  "subMetas": {
+    "yoshi-s_island_2_background": {
+      "ver": "1.0.4",
+      "uuid": "2d118a93-ea50-4eff-81b1-8d06b9147b35",
+      "rawTextureUuid": "f694556c-898d-4265-9efb-3223b35e29d3",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 512,
+      "height": 432,
+      "rawWidth": 512,
+      "rawHeight": 432,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
