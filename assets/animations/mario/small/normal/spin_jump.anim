@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "spin_jump",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.13333333333333333,
+  "sample": 30,
+  "speed": 0.5,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "9b7fad1d-7a16-4e56-9a81-1ffa511e2382"
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "2be51601-f0f6-479c-9717-836abc5df857"
+            }
+          },
+          {
+            "frame": 0.06666666666666667,
+            "value": {
+              "__uuid__": "ffd9aa46-54a9-4bd6-bf99-852d840982ed"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "33e3bcac-168f-40fd-8705-d8ea70dfa5bb"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
