@@ -171,7 +171,7 @@
       "array": [
         0,
         0,
-        270.1924137497067,
+        256.4451049276124,
         0,
         0,
         0,
@@ -232,7 +232,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Sprite",
+    "_name": "CharacterTestSprite",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2
@@ -258,8 +258,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 15,
-      "height": 21
+      "width": 14,
+      "height": 20
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -306,7 +306,7 @@
     "_defaultClip": null,
     "_clips": [
       {
-        "__uuid__": "a7b61afe-5e5a-4415-b651-4fb1c516ac3b"
+        "__uuid__": "bdbdce66-bee6-46bd-9d7c-c7cb9d16f46f"
       }
     ],
     "playOnLoad": false,
@@ -328,7 +328,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "662fe7ae-d3c0-4462-a70e-3cd88715c4d9"
+      "__uuid__": "86b19054-94bb-4acb-87f1-bbe0a2af59d4"
     },
     "_type": 0,
     "_sizeMode": 1,
