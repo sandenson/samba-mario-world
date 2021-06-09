@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "lucky_block",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.13333333333333333,
+  "sample": 30,
+  "speed": 0.25,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "a1b5744c-1845-4266-b960-c370cb813d11"
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "c368b45d-1cc8-4132-a9ed-1eb1533184a9"
+            }
+          },
+          {
+            "frame": 0.06666666666666667,
+            "value": {
+              "__uuid__": "94feb0cd-2b06-4286-a3e0-ad3e0d0acbb6"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "be86dd58-64f7-4211-99c2-166ba333d458"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
