@@ -1,0 +1,37 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "defeated",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.1,
+  "sample": 30,
+  "speed": 1,
+  "wrapMode": 22,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "cb0fff6c-8947-40b5-a4cd-4b4c2b0db6c0"
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "657c53f8-dbcf-4c1b-8eca-72b5bc1cf9ae"
+            }
+          },
+          {
+            "frame": 0.06666666666666667,
+            "value": {
+              "__uuid__": "d0693b8a-2faa-43e4-b4b2-cc583f7b3f3a"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
