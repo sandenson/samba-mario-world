@@ -36,6 +36,42 @@
             }
           }
         ]
+      },
+      "cc.BoxCollider": {
+        "size": [
+          {
+            "frame": 0,
+            "value": {
+              "__type__": "cc.Size",
+              "width": 12,
+              "height": 16
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__type__": "cc.Size",
+              "width": 8,
+              "height": 16
+            }
+          },
+          {
+            "frame": 0.06666666666666667,
+            "value": {
+              "__type__": "cc.Size",
+              "width": 6,
+              "height": 16
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__type__": "cc.Size",
+              "width": 8,
+              "height": 16
+            }
+          }
+        ]
       }
     }
   },

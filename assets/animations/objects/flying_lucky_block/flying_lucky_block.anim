@@ -24,6 +24,26 @@
             }
           }
         ]
+      },
+      "cc.PhysicsBoxCollider": {
+        "offset": [
+          {
+            "frame": 0,
+            "value": {
+              "__type__": "cc.Vec2",
+              "x": 0,
+              "y": -4.5
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__type__": "cc.Vec2",
+              "x": 0,
+              "y": -0.5
+            }
+          }
+        ]
       }
     }
   },
