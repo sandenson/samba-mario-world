@@ -1,0 +1,66 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "main_map_camera_cruise",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 40,
+  "sample": 30,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "position": [
+        {
+          "frame": 0,
+          "value": [
+            -2188.9,
+            0
+          ],
+          "motionPath": []
+        },
+        {
+          "frame": 20,
+          "value": [
+            952.3,
+            0
+          ],
+          "motionPath": []
+        },
+        {
+          "frame": 22.5,
+          "value": [
+            952.3,
+            258.6
+          ],
+          "motionPath": [
+            [
+              952.3,
+              128.5,
+              952.3,
+              193.7,
+              952.3,
+              62.9
+            ]
+          ]
+        },
+        {
+          "frame": 25,
+          "value": [
+            952.3,
+            -0.14,
+            0
+          ]
+        },
+        {
+          "frame": 40,
+          "value": [
+            2611.605,
+            -0.14,
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "events": []
+}

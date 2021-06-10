@@ -25,16 +25,13 @@
       },
       {
         "__id__": 110
+      },
+      {
+        "__id__": 146
       }
     ],
     "_active": true,
     "_components": [
-      {
-        "__id__": 146
-      },
-      {
-        "__id__": 147
-      },
       {
         "__id__": 148
       },
@@ -64,10 +61,16 @@
       },
       {
         "__id__": 157
+      },
+      {
+        "__id__": 158
+      },
+      {
+        "__id__": 159
       }
     ],
     "_prefab": {
-      "__id__": 158
+      "__id__": 160
     },
     "_opacity": 255,
     "_color": {
@@ -3712,6 +3715,52 @@
     },
     "fileId": "015pejz4dBAZM5/L5RXb4S",
     "sync": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_objFlags": 512,
+    "_parent": {
+      "__id__": 1
+    },
+    "_id": "",
+    "_prefab": {
+      "__id__": 147
+    },
+    "_name": "Goal",
+    "_active": true,
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        2279.5,
+        -96,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    }
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 146
+    },
+    "asset": {
+      "__uuid__": "748e95bb-bb89-4bf5-84d9-bdeac5f02dd2"
+    },
+    "fileId": "41mLvqz9RPeJNWChuLzP5b",
+    "sync": true
   },
   {
     "__type__": "cc.Sprite",

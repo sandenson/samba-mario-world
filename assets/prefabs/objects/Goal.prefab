@@ -14,7 +14,7 @@
   {
     "__type__": "cc.Node",
     "_name": "Goal",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": null,
     "_children": [
       {
@@ -55,8 +55,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        9.538,
-        0,
+        2279.5,
+        -96,
         0,
         0,
         0,
@@ -182,7 +182,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "748e95bb-bb89-4bf5-84d9-bdeac5f02dd2"
     },
     "fileId": "92XtRSQu9L5a18IiyhxZJy",
     "sync": false
@@ -289,7 +289,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "748e95bb-bb89-4bf5-84d9-bdeac5f02dd2"
     },
     "fileId": "0cJ0C7NNVBMZcFX2Ku3ebm",
     "sync": false
@@ -321,7 +321,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "748e95bb-bb89-4bf5-84d9-bdeac5f02dd2"
     },
     "fileId": "",
     "sync": false
