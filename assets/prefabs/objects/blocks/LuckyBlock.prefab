@@ -14,7 +14,7 @@
   {
     "__type__": "cc.Node",
     "_name": "LuckyBlock",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": null,
     "_children": [],
     "_active": true,
@@ -57,8 +57,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        0,
-        0,
+        -1704,
+        -130.898,
         0,
         0,
         0,

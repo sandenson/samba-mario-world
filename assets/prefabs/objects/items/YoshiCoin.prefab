@@ -14,7 +14,7 @@
   {
     "__type__": "cc.Node",
     "_name": "YoshiCoin",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": null,
     "_children": [],
     "_active": true,
@@ -54,8 +54,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        212,
-        96,
+        -1288,
+        -87,
         0,
         0,
         0,
@@ -157,7 +157,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "ed55a6c2-e0f6-4f49-9e7b-e44329ed3e24"
     },
     "fileId": "",
     "sync": false

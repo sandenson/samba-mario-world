@@ -14,7 +14,7 @@
   {
     "__type__": "cc.Node",
     "_name": "Coin",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": null,
     "_children": [],
     "_active": true,
@@ -54,8 +54,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        0,
-        0,
+        -1320,
+        -111,
         0,
         0,
         0,
@@ -157,7 +157,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "8e734843-9e48-4608-a11e-80716d3ef33f"
     },
     "fileId": "",
     "sync": false
