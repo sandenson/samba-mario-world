@@ -14,7 +14,7 @@
   {
     "__type__": "cc.Node",
     "_name": "Checkpoint",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": null,
     "_children": [
       {
@@ -54,8 +54,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        395.84,
-        72.91,
+        23.84,
+        -143.09,
         0,
         0,
         0,
