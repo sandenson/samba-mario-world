@@ -27,20 +27,14 @@
         "__id__": 110
       },
       {
-        "__id__": 146
+        "__id__": 148
       },
       {
-        "__id__": 148
+        "__id__": 150
       }
     ],
     "_active": true,
     "_components": [
-      {
-        "__id__": 150
-      },
-      {
-        "__id__": 151
-      },
       {
         "__id__": 152
       },
@@ -70,10 +64,16 @@
       },
       {
         "__id__": 161
+      },
+      {
+        "__id__": 162
+      },
+      {
+        "__id__": 163
       }
     ],
     "_prefab": {
-      "__id__": 162
+      "__id__": 164
     },
     "_opacity": 255,
     "_color": {
@@ -2872,12 +2872,15 @@
       },
       {
         "__id__": 143
+      },
+      {
+        "__id__": 145
       }
     ],
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 145
+      "__id__": 147
     },
     "_opacity": 255,
     "_color": {
@@ -3618,13 +3621,59 @@
   },
   {
     "__type__": "cc.Node",
-    "_objFlags": 512,
+    "_objFlags": 0,
     "_parent": {
       "__id__": 110
     },
     "_id": "",
     "_prefab": {
       "__id__": 142
+    },
+    "_name": "P-Switch",
+    "_active": true,
+    "_trs": {
+      "__type__": "TypedArray",
+      "ctor": "Float64Array",
+      "array": [
+        1960,
+        -66.5,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "_eulerAngles": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    }
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 141
+    },
+    "asset": {
+      "__uuid__": "fdf2408c-777b-4d32-8fe4-09d12b74d5a9"
+    },
+    "fileId": "e7BYHkAEBJsoyOaQviDnns",
+    "sync": true
+  },
+  {
+    "__type__": "cc.Node",
+    "_objFlags": 512,
+    "_parent": {
+      "__id__": 110
+    },
+    "_id": "",
+    "_prefab": {
+      "__id__": 144
     },
     "_name": "RotatingBlock",
     "_active": true,
@@ -3654,7 +3703,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 141
+      "__id__": 143
     },
     "asset": {
       "__uuid__": "0ab344a2-ca6a-4042-a7e0-68bd201e2003"
@@ -3670,7 +3719,7 @@
     },
     "_id": "",
     "_prefab": {
-      "__id__": 144
+      "__id__": 146
     },
     "_name": "RotatingBlock",
     "_active": true,
@@ -3700,7 +3749,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 143
+      "__id__": 145
     },
     "asset": {
       "__uuid__": "0ab344a2-ca6a-4042-a7e0-68bd201e2003"
@@ -3727,7 +3776,7 @@
     },
     "_id": "",
     "_prefab": {
-      "__id__": 147
+      "__id__": 149
     },
     "_name": "Goal",
     "_active": true,
@@ -3757,7 +3806,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 146
+      "__id__": 148
     },
     "asset": {
       "__uuid__": "748e95bb-bb89-4bf5-84d9-bdeac5f02dd2"
@@ -3773,7 +3822,7 @@
     },
     "_id": "",
     "_prefab": {
-      "__id__": 149
+      "__id__": 151
     },
     "_name": "Checkpoint",
     "_active": true,
@@ -3803,7 +3852,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 148
+      "__id__": 150
     },
     "asset": {
       "__uuid__": "e9d86d66-b5f1-4223-997e-e8fb630e735f"
