@@ -23,11 +23,11 @@ export default abstract class Character extends cc.Component {
 
   public facing: FACING = FACING.right;
 
-  public jumpForce = 0;
+  public abstract jumpForce = 0;
 
-  public walkForce = 0;
+  public abstract moveForce = 0;
 
-  public maxSpeed = 0;
+  public abstract maxSpeed = 0;
 
   public rigidBody: cc.RigidBody;
 

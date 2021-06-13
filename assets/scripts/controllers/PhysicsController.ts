@@ -8,7 +8,7 @@
 const { ccclass } = cc._decorator;
 
 @ccclass
-export default class GameController extends cc.Component {
+export default class PhysicsController extends cc.Component {
   public physicsManager: cc.PhysicsManager;
 
   public collisionManager: cc.CollisionManager;

@@ -14,7 +14,7 @@
   {
     "__type__": "cc.Node",
     "_name": "YoshisIsland2",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": null,
     "_children": [
       {
@@ -3933,13 +3933,13 @@
     "body": null,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 648.08,
-      "y": 208.02
+      "x": 1103.98,
+      "y": -218.4
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 16.16,
-      "height": 16.11
+      "width": 34.75,
+      "height": 5.4
     },
     "_id": ""
   },
@@ -3954,7 +3954,7 @@
     "tag": 0,
     "_density": 1,
     "_sensor": false,
-    "_friction": 0.2,
+    "_friction": 1,
     "_restitution": 0,
     "body": null,
     "_offset": {
@@ -4267,7 +4267,7 @@
     "tag": 0,
     "_density": 1,
     "_sensor": false,
-    "_friction": 0.2,
+    "_friction": 1,
     "_restitution": 0,
     "body": null,
     "_offset": {
