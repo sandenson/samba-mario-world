@@ -172,9 +172,9 @@ export default class Mario extends Character {
   }
 
   private turnAround(direction: FACING) {
-    if (this.state === MARIO_STATES.moving) this.state = MARIO_STATES.skidding;
-    this.node.scaleX *= -1;
     this.facing = direction;
+    if (this.state === MARIO_STATES.moving) this.state = MARIO_STATES.skidding;
+    else this.node.scaleX *= -1;
   }
 
   public jump(type: MARIO_STATES): void {

@@ -22,6 +22,7 @@ export default class MarioStateMachine extends StateMachine<MARIO_STATES, Mario>
   public onAnimationEnd(name: string): void {
     switch (name) {
       case 'skid':
+        this.node.scaleX *= -1;
         this.actor.state = MARIO_STATES.moving;
         break;
 
@@ -54,18 +55,21 @@ export default class MarioStateMachine extends StateMachine<MARIO_STATES, Mario>
       this.actor.state = MARIO_STATES.falling;
 
     if (
+      this.actor.state !== MARIO_STATES.skidding &&
       this.actor.movementType !== MOVEMENT_TYPE.walking &&
       Math.abs(this.actor.rigidBody.linearVelocity.x) <= this.actor.walkingMaxSpeed
     ) {
       this.actor.fromUpdate = true;
       this.actor.movementType = MOVEMENT_TYPE.walking;
     } else if (
+      this.actor.state !== MARIO_STATES.skidding &&
       this.actor.movementType !== MOVEMENT_TYPE.running &&
       Math.abs(this.actor.rigidBody.linearVelocity.x) >= this.actor.walkingMaxSpeed * 1.5
     ) {
       this.actor.fromUpdate = true;
       this.actor.movementType = MOVEMENT_TYPE.running;
     } else if (
+      this.actor.state !== MARIO_STATES.skidding &&
       this.actor.movementType !== MOVEMENT_TYPE.intermediate &&
       Math.abs(this.actor.rigidBody.linearVelocity.x) > this.actor.walkingMaxSpeed &&
       Math.abs(this.actor.rigidBody.linearVelocity.x) < this.actor.walkingMaxSpeed * 1.5
