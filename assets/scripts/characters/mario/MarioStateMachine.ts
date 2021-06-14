@@ -46,7 +46,11 @@ export default class MarioStateMachine extends StateMachine<MARIO_STATES, Mario>
     )
       this.actor.state = MARIO_STATES.idle;
 
-    if (this.actor.rigidBody.linearVelocity.y < 0 && this.actor.state !== MARIO_STATES.ducking)
+    if (
+      this.actor.rigidBody.linearVelocity.y < 0 &&
+      this.actor.state !== MARIO_STATES.ducking &&
+      this.actor.state !== MARIO_STATES.spinJump
+    )
       this.actor.state = MARIO_STATES.falling;
 
     if (

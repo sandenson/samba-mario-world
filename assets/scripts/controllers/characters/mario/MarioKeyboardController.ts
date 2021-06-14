@@ -21,7 +21,14 @@ export default class MarioKeyboardController extends KeyboardController {
   public onKeyDown(event: cc.Event.EventKeyboard): void {
     switch (event.keyCode) {
       case cc.macro.KEY.z:
-        this.mario.jump();
+        this.mario.jump(MARIO_STATES.jumping);
+        break;
+      case cc.macro.KEY.x:
+        this.mario.jump(MARIO_STATES.spinJump);
+        break;
+      case cc.macro.KEY.c:
+        // eslint-disable-next-line dot-notation
+        this.pressedKeys['c'] = true;
         break;
       case cc.macro.KEY.left:
         // eslint-disable-next-line dot-notation
@@ -38,10 +45,6 @@ export default class MarioKeyboardController extends KeyboardController {
       case cc.macro.KEY.up:
         // eslint-disable-next-line dot-notation
         this.pressedKeys['UP'] = true;
-        break;
-      case cc.macro.KEY.c:
-        // eslint-disable-next-line dot-notation
-        this.pressedKeys['c'] = true;
         break;
       default:
         break;

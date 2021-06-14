@@ -123,8 +123,11 @@ export default class Mario extends Character {
       // eslint-disable-next-line no-console
       // console.log(animationName);
 
-      if (this.state !== MARIO_STATES.moving) this.getComponent(cc.Animation).play(animationName);
-      else {
+      if (this.state !== MARIO_STATES.moving) {
+        const anim = this.getComponent(cc.Animation).play(animationName);
+        // eslint-disable-next-line no-console
+        console.log(anim.speed);
+      } else {
         const anim = this.getComponent(cc.Animation).play(animationName);
 
         if (this.movementType === MOVEMENT_TYPE.walking) anim.speed = 0.4;
@@ -174,9 +177,13 @@ export default class Mario extends Character {
     this.facing = direction;
   }
 
-  public jump(): void {
-    if (!this.isJumping && this.state !== MARIO_STATES.falling) {
-      if (this.state !== MARIO_STATES.ducking) this.state = MARIO_STATES.jumping;
+  public jump(type: MARIO_STATES): void {
+    if (
+      !this.isJumping &&
+      this.state !== MARIO_STATES.falling &&
+      (type === MARIO_STATES.jumping || type === MARIO_STATES.spinJump)
+    ) {
+      if (this.state !== MARIO_STATES.ducking) this.state = type;
       this.isJumping = true;
       this.rigidBody.applyForceToCenter(cc.v2(0, this.jumpForce), true);
     }
