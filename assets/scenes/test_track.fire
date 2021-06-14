@@ -303,10 +303,12 @@
       "__id__": 5
     },
     "_enabled": true,
-    "_defaultClip": null,
+    "_defaultClip": {
+      "__uuid__": "7e74ba32-29cb-474c-8f5d-9d61835cad37"
+    },
     "_clips": [
       {
-        "__uuid__": "d9d82a86-733f-403b-be5b-e38c2353f1cc"
+        "__uuid__": "7e74ba32-29cb-474c-8f5d-9d61835cad37"
       }
     ],
     "playOnLoad": false,
