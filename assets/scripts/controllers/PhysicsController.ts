@@ -16,7 +16,7 @@ export default class PhysicsController extends cc.Component {
   public onLoad(): void {
     this.physicsManager = cc.director.getPhysicsManager();
     this.physicsManager.enabled = true;
-    this.physicsManager.gravity = cc.v2(0, -2000);
+    this.physicsManager.gravity = cc.v2(0, -1500);
 
     this.collisionManager = cc.director.getCollisionManager();
     this.collisionManager.enabled = true;

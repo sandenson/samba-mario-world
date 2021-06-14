@@ -7,6 +7,7 @@
 
 import FACING from '../../../characters/FACING';
 import Mario from '../../../characters/mario/Mario';
+import MARIO_STATES from '../../../characters/mario/MARIO_STATES';
 import KeyboardController from '../../KeyboardController';
 
 const { ccclass } = cc._decorator;
@@ -30,6 +31,18 @@ export default class MarioKeyboardController extends KeyboardController {
         // eslint-disable-next-line dot-notation
         this.pressedKeys['RIGHT'] = true;
         break;
+      case cc.macro.KEY.down:
+        // eslint-disable-next-line dot-notation
+        this.pressedKeys['DOWN'] = true;
+        break;
+      case cc.macro.KEY.up:
+        // eslint-disable-next-line dot-notation
+        this.pressedKeys['UP'] = true;
+        break;
+      case cc.macro.KEY.c:
+        // eslint-disable-next-line dot-notation
+        this.pressedKeys['c'] = true;
+        break;
       default:
         break;
     }
@@ -44,6 +57,23 @@ export default class MarioKeyboardController extends KeyboardController {
       case cc.macro.KEY.right:
         // eslint-disable-next-line dot-notation
         delete this.pressedKeys['RIGHT'];
+        break;
+      case cc.macro.KEY.down:
+        // eslint-disable-next-line dot-notation
+        delete this.pressedKeys['DOWN'];
+
+        this.mario.state = MARIO_STATES.idle;
+        break;
+      case cc.macro.KEY.up:
+        // eslint-disable-next-line dot-notation
+        delete this.pressedKeys['UP'];
+
+        this.mario.state = MARIO_STATES.idle;
+        break;
+      case cc.macro.KEY.c:
+        // eslint-disable-next-line dot-notation
+        delete this.pressedKeys['c'];
+        this.mario.runHoldDown = false;
         break;
       default:
         break;
@@ -63,6 +93,15 @@ export default class MarioKeyboardController extends KeyboardController {
     }
     if ('RIGHT' in this.pressedKeys) {
       this.mario.move(FACING.right);
+    }
+    if ('DOWN' in this.pressedKeys) {
+      this.mario.duck();
+    }
+    if ('UP' in this.pressedKeys) {
+      this.mario.lookUp();
+    }
+    if ('c' in this.pressedKeys) {
+      this.mario.runHoldDown = true;
     }
   }
 }

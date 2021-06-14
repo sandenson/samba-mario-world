@@ -72,8 +72,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        65.262,
-        132.213,
+        -94.738,
+        12.213,
         0,
         0,
         0,
@@ -238,7 +238,7 @@
     "tag": 2,
     "_density": 1,
     "_sensor": false,
-    "_friction": 10,
+    "_friction": 1,
     "_restitution": 0,
     "body": null,
     "_offset": {

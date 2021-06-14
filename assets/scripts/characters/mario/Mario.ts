@@ -14,11 +14,28 @@ const { ccclass } = cc._decorator;
 
 @ccclass
 export default class Mario extends Character {
-  public jumpForce = 2.5;
+  public jumpForce = 1800;
 
-  public moveForce = 3;
+  public moveForce = 150;
 
-  public maxSpeed = 4;
+  public maxSpeed = 200;
+
+  public walkingMaxSpeed = 200;
+
+  private _runHoldDown = false;
+
+  public get runHoldDown(): boolean {
+    return this._runHoldDown;
+  }
+
+  public set runHoldDown(value: boolean) {
+    if (this.runHoldDown !== value) {
+      this._runHoldDown = value;
+
+      if (!this.runHoldDown) this.maxSpeed = this.walkingMaxSpeed;
+      else this.maxSpeed = this.walkingMaxSpeed * 2;
+    }
+  }
 
   private _isSuper = false;
 
@@ -40,80 +57,146 @@ export default class Mario extends Character {
     this._isHolding = value;
   }
 
-  private _movementType: MOVEMENT_TYPE = MOVEMENT_TYPE.idle;
+  private _movementType: MOVEMENT_TYPE = MOVEMENT_TYPE.walking;
+
+  public fromUpdate = false;
 
   public get movementType(): MOVEMENT_TYPE {
     return this._movementType;
   }
 
   public set movementType(value: MOVEMENT_TYPE) {
-    this._movementType = value;
+    if (this.runHoldDown && this.movementType !== value) {
+      // eslint-disable-next-line no-console
+      console.log(value);
+
+      this._movementType = value;
+
+      this.state = MARIO_STATES.moving;
+    }
   }
 
-  public _state: MARIO_STATES = MARIO_STATES.idle;
+  private _state: MARIO_STATES = MARIO_STATES.idle;
 
   public get state(): MARIO_STATES {
     return this._state;
   }
 
   public set state(value: MARIO_STATES) {
-    this._state = value;
+    if (
+      this.state !== value ||
+      (this.state === value && this.state === MARIO_STATES.moving && this.runHoldDown && this.fromUpdate)
+    ) {
+      this._state = value;
 
-    let animationName = '';
+      let animationName = '';
 
-    if (this.isSuper) {
-      animationName = 'super_';
+      if (this.isSuper) animationName = 'super_';
 
-      if (this.isHolding) {
-        animationName += 'hold_';
+      if (this.isHolding) animationName += 'hold_';
+
+      if (this.state === MARIO_STATES.jumping && !this.isHolding) {
+        switch (this.movementType) {
+          case MOVEMENT_TYPE.running:
+            animationName += 'run_jump';
+            break;
+
+          default:
+            animationName = 'jump';
+            break;
+        }
+      } else if (this.state === MARIO_STATES.jumping && this.isHolding) {
+        animationName += 'jump';
+      } else if (this.state === MARIO_STATES.moving) {
+        switch (this.movementType) {
+          case MOVEMENT_TYPE.running:
+            animationName = 'run';
+            break;
+          default:
+            animationName = 'walk';
+            break;
+        }
+      } else {
+        animationName += this.state;
+      }
+
+      // eslint-disable-next-line no-console
+      // console.log(animationName);
+
+      if (this.state !== MARIO_STATES.moving) this.getComponent(cc.Animation).play(animationName);
+      else {
+        const anim = this.getComponent(cc.Animation).play(animationName);
+
+        if (this.movementType === MOVEMENT_TYPE.walking) anim.speed = 0.4;
+
+        if (this.movementType === MOVEMENT_TYPE.intermediate) anim.speed = 0.6;
+
+        if (this.movementType === MOVEMENT_TYPE.running) anim.speed = 1;
+
+        this.fromUpdate = false;
       }
     }
+  }
 
-    if (this.state === MARIO_STATES.jumping) {
-      switch (this.movementType) {
-        case MOVEMENT_TYPE.running:
-          animationName = 'run_jump';
-          break;
+  protected _isJumping = false;
 
-        default:
-          animationName = 'jump';
-          break;
-      }
-    } else if (this.state === MARIO_STATES.moving) {
-      animationName += 'walk';
-    } else {
-      animationName += this.state;
-    }
+  public get isJumping(): boolean {
+    return this._isJumping;
+  }
 
-    this.getComponent(cc.Animation).play(animationName);
+  public set isJumping(value: boolean) {
+    this._isJumping = value;
+
+    if (!this.isJumping) this.state = MARIO_STATES.idle;
   }
 
   public move(direction: FACING): void {
-    this.movePlayer(direction);
-    if (direction !== this.facing) {
-      this.turnAround(direction);
-    } else if (!this.isJumping) {
-      this.state = MARIO_STATES.moving;
+    if (this.state !== MARIO_STATES.ducking) {
+      this.movePlayer(direction);
+      if (direction !== this.facing) {
+        this.turnAround(direction);
+      } else if (!this.isJumping && this.state !== MARIO_STATES.skidding && this.state !== MARIO_STATES.falling) {
+        this.state = MARIO_STATES.moving;
+      }
     }
   }
 
   private movePlayer(direction: FACING) {
     // console.log("move");
-    if (Math.abs(this.rigidBody.linearVelocity.x) < this.maxSpeed * 50) {
-      this.rigidBody.applyForceToCenter(cc.v2(direction * this.moveForce * 50, 0), true);
+    if (Math.abs(this.rigidBody.linearVelocity.x) < this.maxSpeed) {
+      this.rigidBody.applyForceToCenter(cc.v2(direction * this.moveForce, 0), true);
     }
   }
 
   private turnAround(direction: FACING) {
+    if (this.state === MARIO_STATES.moving) this.state = MARIO_STATES.skidding;
     this.node.scaleX *= -1;
     this.facing = direction;
   }
 
   public jump(): void {
-    if (!this.isJumping) {
-      this.state = MARIO_STATES.jumping;
+    if (!this.isJumping && this.state !== MARIO_STATES.falling) {
+      if (this.state !== MARIO_STATES.ducking) this.state = MARIO_STATES.jumping;
       this.isJumping = true;
-      this.rigidBody.applyForceToCenter(cc.v2(0, this.jumpForce * 1000), true);
+      this.rigidBody.applyForceToCenter(cc.v2(0, this.jumpForce), true);
+    }
+  }
+
+  public duck(): void {
+    if (
+      this.state === MARIO_STATES.idle ||
+      this.state === MARIO_STATES.kickingShell ||
+      this.state === MARIO_STATES.lookingUp ||
+      this.state === MARIO_STATES.moving ||
+      this.state === MARIO_STATES.skidding
+    ) {
+      this.state = MARIO_STATES.ducking;
+    }
+  }
+
+  public lookUp(): void {
+    if (this.state === MARIO_STATES.idle) {
+      this.state = MARIO_STATES.lookingUp;
     }
   }
 
@@ -121,11 +204,5 @@ export default class Mario extends Character {
     if (self.tag === 2 && this.isJumping) {
       this.isJumping = false;
     }
-  }
-
-  public start(): void {
-    this.jump();
-    // eslint-disable-next-line no-console
-    console.log('kek ou cringe');
   }
 }

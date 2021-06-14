@@ -20,12 +20,20 @@
           {
             "frame": 0.03333333333333333,
             "value": {
-              "__uuid__": "86b19054-94bb-4acb-87f1-bbe0a2af59d4"
+              "__uuid__": "662fe7ae-d3c0-4462-a70e-3cd88715c4d9"
             }
           }
         ]
       }
     }
   },
-  "events": []
+  "events": [
+    {
+      "frame": 0.03333333333333333,
+      "func": "onAnimationEnd",
+      "params": [
+        "skid"
+      ]
+    }
+  ]
 }

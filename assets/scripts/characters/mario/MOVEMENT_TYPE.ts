@@ -2,7 +2,7 @@
 enum MOVEMENT_TYPE {
   walking = 'walk',
   running = 'run',
-  idle = 'idle',
+  intermediate = 'intermediate',
 }
 
 export default MOVEMENT_TYPE;
