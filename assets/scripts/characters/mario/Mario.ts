@@ -14,11 +14,11 @@ const { ccclass } = cc._decorator;
 
 @ccclass
 export default class Mario extends Character {
-  public jumpForce = 1800;
+  public jumpForce = 7500;
 
-  public moveForce = 150;
+  public moveForce = 500;
 
-  public maxSpeed = 200;
+  public maxSpeed = 600;
 
   public walkingMaxSpeed = 200;
 
@@ -124,9 +124,7 @@ export default class Mario extends Character {
       // console.log(animationName);
 
       if (this.state !== MARIO_STATES.moving) {
-        const anim = this.getComponent(cc.Animation).play(animationName);
-        // eslint-disable-next-line no-console
-        console.log(anim.speed);
+        this.getComponent(cc.Animation).play(animationName);
       } else {
         const anim = this.getComponent(cc.Animation).play(animationName);
 

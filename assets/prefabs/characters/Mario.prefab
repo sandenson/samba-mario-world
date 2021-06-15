@@ -72,8 +72,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -94.738,
-        12.213,
+        860.66,
+        7.822,
         0,
         0,
         0,
@@ -235,7 +235,7 @@
       "__id__": 1
     },
     "_enabled": true,
-    "tag": 2,
+    "tag": 1,
     "_density": 1,
     "_sensor": false,
     "_friction": 1,
@@ -244,12 +244,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -8.85
+      "y": 1
     },
     "_size": {
       "__type__": "cc.Size",
       "width": 14,
-      "height": 2.39
+      "height": 18
     },
     "_id": ""
   },
@@ -270,12 +270,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -8.85
+      "y": -9
     },
     "_size": {
       "__type__": "cc.Size",
       "width": 14,
-      "height": 2.39
+      "height": 2
     },
     "_id": ""
   },

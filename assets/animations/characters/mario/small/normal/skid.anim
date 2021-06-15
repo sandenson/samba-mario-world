@@ -3,7 +3,7 @@
   "_name": "skid",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 0.1,
+  "_duration": 0.06666666666666667,
   "sample": 30,
   "speed": 0.5,
   "wrapMode": 1,
@@ -18,7 +18,7 @@
             }
           },
           {
-            "frame": 0.06666666666666667,
+            "frame": 0.03333333333333333,
             "value": {
               "__uuid__": "662fe7ae-d3c0-4462-a70e-3cd88715c4d9"
             }
@@ -29,7 +29,7 @@
   },
   "events": [
     {
-      "frame": 0.06666666666666667,
+      "frame": 0.03333333333333333,
       "func": "onAnimationEnd",
       "params": [
         "skid"
