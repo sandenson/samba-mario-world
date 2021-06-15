@@ -5,7 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import FACING from '../../../characters/FACING';
+import { DIRECTIONS } from '../../../characters/DIRECTION';
 import Mario from '../../../characters/mario/Mario';
 import MARIO_STATES from '../../../characters/mario/MARIO_STATES';
 import KeyboardController from '../../KeyboardController';
@@ -56,22 +56,40 @@ export default class MarioKeyboardController extends KeyboardController {
       case cc.macro.KEY.left:
         // eslint-disable-next-line dot-notation
         delete this.pressedKeys['LEFT'];
+
+        if (this.mario.isClimbingVines) {
+          this.mario.rigidBody.linearVelocity = cc.v2(0, 0);
+          this.mario.climbingBool = false;
+        }
         break;
       case cc.macro.KEY.right:
         // eslint-disable-next-line dot-notation
         delete this.pressedKeys['RIGHT'];
+
+        if (this.mario.isClimbingVines) {
+          this.mario.rigidBody.linearVelocity = cc.v2(0, 0);
+          this.mario.climbingBool = false;
+        }
         break;
       case cc.macro.KEY.down:
         // eslint-disable-next-line dot-notation
         delete this.pressedKeys['DOWN'];
 
-        this.mario.state = MARIO_STATES.idle;
+        if (this.mario.state !== MARIO_STATES.climbingVines) this.mario.state = MARIO_STATES.idle;
+        if (this.mario.isClimbingVines) {
+          this.mario.rigidBody.linearVelocity = cc.v2(0, 0);
+          this.mario.climbingBool = false;
+        }
         break;
       case cc.macro.KEY.up:
         // eslint-disable-next-line dot-notation
         delete this.pressedKeys['UP'];
 
-        this.mario.state = MARIO_STATES.idle;
+        if (this.mario.state !== MARIO_STATES.climbingVines) this.mario.state = MARIO_STATES.idle;
+        if (this.mario.isClimbingVines) {
+          this.mario.rigidBody.linearVelocity = cc.v2(0, 0);
+          this.mario.climbingBool = false;
+        }
         break;
       case cc.macro.KEY.c:
         // eslint-disable-next-line dot-notation
@@ -92,16 +110,20 @@ export default class MarioKeyboardController extends KeyboardController {
 
   public update(dt: number): void {
     if ('LEFT' in this.pressedKeys) {
-      this.mario.move(FACING.left);
+      this.mario.move(DIRECTIONS.left);
     }
     if ('RIGHT' in this.pressedKeys) {
-      this.mario.move(FACING.right);
+      this.mario.move(DIRECTIONS.right);
     }
     if ('DOWN' in this.pressedKeys) {
-      this.mario.duck();
+      if (this.mario.state !== MARIO_STATES.climbingVines && !this.mario.vinesContact) this.mario.duck();
+      if (this.mario.vinesContact) this.mario.climbVine(DIRECTIONS.down);
+      if (this.mario.isClimbingVines) this.mario.move(DIRECTIONS.down);
     }
     if ('UP' in this.pressedKeys) {
-      this.mario.lookUp();
+      if (this.mario.state !== MARIO_STATES.climbingVines && !this.mario.vinesContact) this.mario.lookUp();
+      if (this.mario.vinesContact) this.mario.climbVine(DIRECTIONS.up);
+      if (this.mario.isClimbingVines) this.mario.move(DIRECTIONS.up);
     }
     if ('c' in this.pressedKeys) {
       this.mario.runHoldDown = true;

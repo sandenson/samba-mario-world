@@ -5,7 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import FACING from './FACING';
+import DIRECTION, { DIRECTIONS } from './DIRECTION';
 
 const { ccclass } = cc._decorator;
 
@@ -21,7 +21,7 @@ export default abstract class Character extends cc.Component {
     this._isJumping = value;
   }
 
-  public facing: FACING = FACING.right;
+  public facing: DIRECTION = DIRECTIONS.right;
 
   public abstract jumpForce = 0;
 

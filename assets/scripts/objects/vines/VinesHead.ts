@@ -12,33 +12,62 @@ export default class VinesHead extends cc.Component {
   @property(cc.Prefab)
   public vinePrefab: cc.Prefab = null;
 
+  private vinesNode: cc.Node = null;
+
   public nVines = 0;
 
   public start(): void {
     this.loop();
   }
 
+  public onLoad(): void {
+    this.vinesNode = this.node.getParent().children.find((node: cc.Node) => node.name === 'Vines');
+  }
+
   private loop(): void {
     let aux = 1;
+    let firstVineCollider: cc.BoxCollider = null;
 
     cc.tween(this.node)
       .parallel(
         cc
           .tween()
+          .call(() => {
+            const vine = cc.instantiate(this.vinePrefab);
+
+            if (aux !== 1) {
+              vine.getComponent(cc.BoxCollider).destroy();
+              firstVineCollider.size.height += 16;
+              firstVineCollider.offset.y += 8;
+            } else {
+              firstVineCollider = vine.getComponent(cc.BoxCollider);
+            }
+
+            this.vinesNode.addChild(vine);
+
+            vine.setPosition(cc.v3(0, aux * 16, 0));
+
+            aux += 1;
+          })
           .repeat(
-            this.nVines - 1,
+            this.nVines - 2,
             cc
               .tween()
               .delay(0.3)
               .call(() => {
                 const vine = cc.instantiate(this.vinePrefab);
 
-                this.node.parent.addChild(vine);
+                if (aux !== 1) {
+                  vine.getComponent(cc.BoxCollider).destroy();
+                  firstVineCollider.size.height += 16;
+                  firstVineCollider.offset.y += 8;
+                } else {
+                  firstVineCollider = vine.getComponent(cc.BoxCollider);
+                }
+
+                this.vinesNode.addChild(vine);
 
                 vine.setPosition(cc.v3(0, aux * 16, 0));
-
-                // eslint-disable-next-line no-console
-                console.log(aux);
 
                 aux += 1;
               })
@@ -47,7 +76,11 @@ export default class VinesHead extends cc.Component {
           .call(() => {
             const vine = cc.instantiate(this.vinePrefab);
 
-            this.node.parent.addChild(vine);
+            vine.getComponent(cc.BoxCollider).destroy();
+            firstVineCollider.size.height += 16;
+            firstVineCollider.offset.y += 8;
+
+            this.vinesNode.addChild(vine);
 
             vine.setPosition(cc.v3(0, aux * 16, 0));
 
@@ -56,46 +89,7 @@ export default class VinesHead extends cc.Component {
         cc
           .tween()
           .to(0.3 * (this.nVines - 1), { position: cc.v2(0, this.node.getPosition().y + 16 * (this.nVines - 1)) })
-        // .to(0.3, { position: cc.v3(position.x, position.y + 16, 0) })
       )
       .start();
-
-    // this.node.runAction(
-    //   cc.sequence(
-    //     cc.repeat(
-    //       cc.sequence(
-    //         cc.callFunc(() => {
-    //           position = this.node.getPosition();
-    //         }),
-    //         cc.moveTo(0.5, cc.v2(position.x, position.y + 16)),
-    //         cc.callFunc(() => {
-    //           const vine = cc.instantiate(this.vinePrefab);
-
-    //           this.node.parent.addChild(vine);
-
-    //           vine.setPosition(cc.v3(0, aux * 16, 0));
-
-    //           // eslint-disable-next-line no-console
-    //           console.log(aux);
-
-    //           aux += 1;
-    //         })
-    //       ),
-    //       this.nVines - 1
-    //     ),
-    //     cc.callFunc(() => {
-    //       const vine = cc.instantiate(this.vinePrefab);
-
-    //       this.node.parent.addChild(vine);
-
-    //       vine.setPosition(cc.v3(0, aux * 16, 0));
-
-    //       this.destroy();
-    //     })
-    //   )
-    // );
-
-    // eslint-disable-next-line no-console
-    console.log('pão');
   }
 }

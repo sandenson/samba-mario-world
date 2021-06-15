@@ -6,11 +6,11 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
 import Character from '../Character';
-import FACING from '../FACING';
+import DIRECTION, { DIRECTIONS } from '../DIRECTION';
 import MARIO_STATES from './MARIO_STATES';
 import MOVEMENT_TYPE from './MOVEMENT_TYPE';
 
-const { ccclass } = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class Mario extends Character {
@@ -23,6 +23,18 @@ export default class Mario extends Character {
   public walkingMaxSpeed = 200;
 
   private _runHoldDown = false;
+
+  @property(cc.SpriteFrame)
+  public climbingSprite1: cc.SpriteFrame = null;
+
+  @property(cc.SpriteFrame)
+  public climbingSprite2: cc.SpriteFrame = null;
+
+  @property(cc.SpriteFrame)
+  public climbingSpriteSuper1: cc.SpriteFrame = null;
+
+  @property(cc.SpriteFrame)
+  public climbingSpriteSuper2: cc.SpriteFrame = null;
 
   public get runHoldDown(): boolean {
     return this._runHoldDown;
@@ -67,12 +79,46 @@ export default class Mario extends Character {
 
   public set movementType(value: MOVEMENT_TYPE) {
     if (this.runHoldDown && this.movementType !== value) {
-      // eslint-disable-next-line no-console
-      console.log(value);
-
       this._movementType = value;
 
       this.state = MARIO_STATES.moving;
+    }
+  }
+
+  private _vinesContact = false;
+
+  public get vinesContact(): boolean {
+    return this._vinesContact;
+  }
+
+  public set vinesContact(value: boolean) {
+    if (value !== this.vinesContact) {
+      this._vinesContact = value;
+
+      if (!this.vinesContact && this.isClimbingVines) this.isClimbingVines = false;
+    }
+  }
+
+  private _isClimbingVines = false;
+
+  public get isClimbingVines(): boolean {
+    return this._isClimbingVines;
+  }
+
+  public set isClimbingVines(value: boolean) {
+    if (value !== this.isClimbingVines) {
+      this._isClimbingVines = value;
+
+      if (this.isClimbingVines) {
+        this.climbingBool = true;
+        this.state = MARIO_STATES.climbingVines;
+        this.rigidBody.linearVelocity = cc.v2(0, 0);
+        this.rigidBody.gravityScale = 0;
+      } else {
+        this.state = MARIO_STATES.idle;
+        this.climbingBool = false;
+        this.rigidBody.gravityScale = 1;
+      }
     }
   }
 
@@ -120,9 +166,6 @@ export default class Mario extends Character {
         animationName += this.state;
       }
 
-      // eslint-disable-next-line no-console
-      // console.log(animationName);
-
       if (this.state !== MARIO_STATES.moving) {
         this.getComponent(cc.Animation).play(animationName);
       } else {
@@ -151,25 +194,47 @@ export default class Mario extends Character {
     if (!this.isJumping) this.state = MARIO_STATES.idle;
   }
 
-  public move(direction: FACING): void {
+  private _climbingBool = false;
+
+  public get climbingBool(): boolean {
+    return this._climbingBool;
+  }
+
+  public set climbingBool(bool: boolean) {
+    if (bool !== this.climbingBool) {
+      this._climbingBool = bool;
+
+      if (this.isClimbingVines && !this.climbingBool) this.getComponent(cc.Animation).pause();
+      if (this.isClimbingVines && this.climbingBool) this.getComponent(cc.Animation).resume();
+    }
+  }
+
+  public move(direction: DIRECTION): void {
     if (this.state !== MARIO_STATES.ducking) {
       this.movePlayer(direction);
-      if (direction !== this.facing) {
+      if (direction.x !== 0 && direction !== this.facing) {
         this.turnAround(direction);
-      } else if (!this.isJumping && this.state !== MARIO_STATES.skidding && this.state !== MARIO_STATES.falling) {
+      } else if (
+        !this.isJumping &&
+        this.state !== MARIO_STATES.skidding &&
+        this.state !== MARIO_STATES.falling &&
+        this.state !== MARIO_STATES.climbingVines
+      ) {
         this.state = MARIO_STATES.moving;
       }
     }
   }
 
-  private movePlayer(direction: FACING) {
-    // console.log("move");
-    if (Math.abs(this.rigidBody.linearVelocity.x) < this.maxSpeed) {
-      this.rigidBody.applyForceToCenter(cc.v2(direction * this.moveForce, 0), true);
+  private movePlayer(direction: DIRECTION) {
+    if (Math.abs(this.rigidBody.linearVelocity.x) < this.maxSpeed && !this.isClimbingVines) {
+      this.rigidBody.applyForceToCenter(cc.v2(direction.x * this.moveForce, 0), true);
+    } else {
+      this.climbingBool = true;
+      this.rigidBody.linearVelocity = cc.v2(direction.x * 75, direction.y * 75);
     }
   }
 
-  private turnAround(direction: FACING) {
+  private turnAround(direction: DIRECTION) {
     this.facing = direction;
     if (this.state === MARIO_STATES.moving) this.state = MARIO_STATES.skidding;
     else this.node.scaleX *= -1;
@@ -183,6 +248,8 @@ export default class Mario extends Character {
     ) {
       if (this.state !== MARIO_STATES.ducking) this.state = type;
       this.isJumping = true;
+      this.moveForce /= 1.5;
+      this.maxSpeed /= 1.5;
       this.rigidBody.applyForceToCenter(cc.v2(0, this.jumpForce), true);
     }
   }
@@ -205,9 +272,27 @@ export default class Mario extends Character {
     }
   }
 
+  public climbVine(direction: DIRECTION): void {
+    if (this.vinesContact && (direction === DIRECTIONS.up || direction === DIRECTIONS.down))
+      this.isClimbingVines = true;
+  }
+
   private onBeginContact(contact: cc.PhysicsContact, self: cc.Collider, other: cc.Collider) {
     if (self.tag === 2 && this.isJumping) {
       this.isJumping = false;
+      this.moveForce *= 1.5;
+      this.maxSpeed *= 1.5;
     }
+    if (self.tag === 2 && this.isClimbingVines) {
+      this.isClimbingVines = false;
+    }
+  }
+
+  private onCollisionEnter(other: cc.Collider, self: cc.Collider) {
+    if (other.tag === 111) this.vinesContact = true;
+  }
+
+  private onCollisionExit(other: cc.Collider, self: cc.Collider) {
+    if (other.tag === 111) this.vinesContact = false;
   }
 }
