@@ -53,7 +53,7 @@ export default class Mario extends Character implements IDyingCharacter {
     }
   }
 
-  private _isSuper = true;
+  private _isSuper = false;
 
   public get isSuper(): boolean {
     return this._isSuper;

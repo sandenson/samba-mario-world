@@ -14,7 +14,7 @@
   {
     "__type__": "cc.Node",
     "_name": "Mario",
-    "_objFlags": 512,
+    "_objFlags": 0,
     "_parent": null,
     "_children": [],
     "_active": true,
@@ -75,7 +75,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        139.579,
+        170.306,
         -60.675,
         0,
         0,
