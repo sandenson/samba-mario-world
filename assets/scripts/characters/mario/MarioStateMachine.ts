@@ -14,9 +14,30 @@ const { ccclass } = cc._decorator;
 
 @ccclass
 export default class MarioStateMachine extends StateMachine<MARIO_STATES, Mario> {
+  private deathAux = true;
+
   public onAnimationStart(name: string): void {
-    // eslint-disable-next-line no-console
-    console.log(name);
+    if (name === 'death') {
+      if (this.deathAux) {
+        this.deathAux = false;
+
+        cc.tween(this.node)
+          .call(() => this.actor.animationComponent.pause())
+          .delay(0.75)
+          .call(() => {
+            this.actor.animationComponent.resume();
+            this.actor.getComponents(cc.Collider).forEach(element => {
+              // eslint-disable-next-line no-param-reassign
+              element.enabled = false;
+            });
+            this.actor.rigidBody.gravityScale = 0.3;
+            this.actor.rigidBody.linearVelocity = cc.v2(0, 300);
+          })
+          .delay(5)
+          .call(() => this.actor.node.destroy())
+          .start();
+      }
+    }
   }
 
   public onAnimationEnd(name: string): void {
@@ -26,7 +47,6 @@ export default class MarioStateMachine extends StateMachine<MARIO_STATES, Mario>
       this.actor.state = stateAux;
       this.actor.canMove = true;
       this.actor.stateReset = false;
-      this.actor.rigidBody.gravityScale = 1;
     }
     if (name === 'skid') {
       this.node.scaleX *= -1;

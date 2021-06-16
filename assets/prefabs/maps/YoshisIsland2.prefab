@@ -76,13 +76,10 @@
       },
       {
         "__id__": 186
-      },
-      {
-        "__id__": 187
       }
     ],
     "_prefab": {
-      "__id__": 188
+      "__id__": 187
     },
     "_opacity": 255,
     "_color": {
@@ -4824,49 +4821,6 @@
     "_id": ""
   },
   {
-    "__type__": "cc.PhysicsPolygonCollider",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "tag": 0,
-    "_density": 1,
-    "_sensor": false,
-    "_friction": 1,
-    "_restitution": 0,
-    "body": null,
-    "_offset": {
-      "__type__": "cc.Vec2",
-      "x": 0,
-      "y": 0
-    },
-    "points": [
-      {
-        "__type__": "cc.Vec2",
-        "x": 1518.71,
-        "y": -168.07
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 1489.341,
-        "y": -168.046
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 1488.57,
-        "y": -120.55
-      },
-      {
-        "__type__": "cc.Vec2",
-        "x": 1519.88,
-        "y": -120.69
-      }
-    ],
-    "_id": ""
-  },
-  {
     "__type__": "cc.PhysicsBoxCollider",
     "_name": "",
     "_objFlags": 0,
@@ -5063,12 +5017,12 @@
       {
         "__type__": "cc.Vec2",
         "x": 1086.61,
-        "y": -220
+        "y": -273
       },
       {
         "__type__": "cc.Vec2",
         "x": 1121.37,
-        "y": -220
+        "y": -273
       },
       {
         "__type__": "cc.Vec2",
@@ -5082,13 +5036,13 @@
       },
       {
         "__type__": "cc.Vec2",
-        "x": 2560.5,
-        "y": -220.3
+        "x": 2559.6,
+        "y": -275
       },
       {
         "__type__": "cc.Vec2",
         "x": -2560,
-        "y": -226.5
+        "y": -275
       }
     ],
     "_id": ""
@@ -5101,7 +5055,7 @@
       "__id__": 1
     },
     "_enabled": true,
-    "tag": 666,
+    "tag": 6666,
     "_density": 1,
     "_sensor": false,
     "_friction": 1,
@@ -5110,12 +5064,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 1103.98,
-      "y": -217.3
+      "y": -270
     },
     "_size": {
       "__type__": "cc.Size",
       "width": 34.75,
-      "height": 5.4
+      "height": 5
     },
     "_id": ""
   },

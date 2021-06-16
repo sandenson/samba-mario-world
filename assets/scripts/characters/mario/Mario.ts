@@ -7,13 +7,16 @@
 
 import Character from '../Character';
 import DIRECTION, { DIRECTIONS } from '../DIRECTION';
+import IDyingCharacter from '../IDyingCharacter';
 import MARIO_STATES from './MARIO_STATES';
 import MOVEMENT_TYPE from './MOVEMENT_TYPE';
 
 const { ccclass } = cc._decorator;
 
 @ccclass
-export default class Mario extends Character {
+export default class Mario extends Character implements IDyingCharacter {
+  private isAlive = true;
+
   public jumpForce = 3000;
 
   public moveForce = 500;
@@ -48,9 +51,7 @@ export default class Mario extends Character {
   public set isSuper(value: boolean) {
     this._isSuper = value;
     this.canMove = false;
-    this.rigidBody.gravityScale = 0;
-    this.rigidBody.linearVelocity = cc.v2(0, 0);
-    this.getComponent(cc.Animation).play('grow_up');
+    this.state = MARIO_STATES.growingUp;
   }
 
   private _isHolding = false;
@@ -156,14 +157,18 @@ export default class Mario extends Character {
             animationName += 'walk';
             break;
         }
+      } else if (this.state === MARIO_STATES.dying || this.state === MARIO_STATES.growingUp) {
+        animationName = this.state;
+        this.stateReset = false;
       } else {
         animationName += this.state;
       }
 
       if (this.state !== MARIO_STATES.moving) {
-        if (this.canMove) this.getComponent(cc.Animation).play(animationName);
+        if (this.canMove || this.state === MARIO_STATES.dying || this.state === MARIO_STATES.growingUp)
+          this.animationComponent.play(animationName);
       } else if (this.canMove) {
-        const anim = this.getComponent(cc.Animation).play(animationName);
+        const anim = this.animationComponent.play(animationName);
 
         if (this.movementType === MOVEMENT_TYPE.walking) anim.speed = 0.4;
 
@@ -198,8 +203,8 @@ export default class Mario extends Character {
     if (bool !== this.climbingBool) {
       this._climbingBool = bool;
 
-      if (this.isClimbingVines && !this.climbingBool) this.getComponent(cc.Animation).pause();
-      if (this.isClimbingVines && this.climbingBool) this.getComponent(cc.Animation).resume();
+      if (this.isClimbingVines && !this.climbingBool) this.animationComponent.pause();
+      if (this.isClimbingVines && this.climbingBool) this.animationComponent.resume();
     }
   }
 
@@ -273,6 +278,14 @@ export default class Mario extends Character {
       this.isClimbingVines = true;
   }
 
+  public die(): void {
+    if (this.isAlive) {
+      this.isAlive = false;
+      this.canMove = false;
+      this.state = MARIO_STATES.dying;
+    }
+  }
+
   private onBeginContact(contact: cc.PhysicsContact, self: cc.Collider, other: cc.Collider) {
     if (self.tag === 2 && this.isJumping) {
       this.isJumping = false;
@@ -282,7 +295,8 @@ export default class Mario extends Character {
     if (self.tag === 2 && this.isClimbingVines) {
       this.isClimbingVines = false;
     }
-    if (other.tag === 666) this.node.destroy();
+    if (other.tag === 6666) this.node.destroy();
+    if (other.tag === 666) this.die();
   }
 
   private onCollisionEnter(other: cc.Collider, self: cc.Collider) {

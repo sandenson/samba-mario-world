@@ -11,6 +11,8 @@ enum MARIO_STATES {
   climbingVines = 'climbing_vines',
   falling = 'fall',
   kickingShell = 'kick_shell',
+  dying = 'death',
+  growingUp = 'grow_up',
 }
 
 export default MARIO_STATES;

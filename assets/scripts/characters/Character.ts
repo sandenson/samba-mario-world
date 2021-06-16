@@ -11,7 +11,24 @@ const { ccclass } = cc._decorator;
 
 @ccclass
 export default abstract class Character extends cc.Component {
-  public canMove = true;
+  private _canMove = true;
+
+  public get canMove(): boolean {
+    return this._canMove;
+  }
+
+  public set canMove(value: boolean) {
+    if (value !== this.canMove) {
+      this._canMove = value;
+
+      if (!this.canMove) {
+        this.rigidBody.linearVelocity = cc.v2(0, 0);
+        if (this.isJumping) this.rigidBody.gravityScale = 0;
+      } else {
+        this.rigidBody.gravityScale = 1;
+      }
+    }
+  }
 
   protected _isJumping = false;
 
@@ -33,7 +50,10 @@ export default abstract class Character extends cc.Component {
 
   public rigidBody: cc.RigidBody;
 
+  public animationComponent: cc.Animation;
+
   public onLoad(): void {
     this.rigidBody = this.getComponent(cc.RigidBody);
+    this.animationComponent = this.getComponent(cc.Animation);
   }
 }
