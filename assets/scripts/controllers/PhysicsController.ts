@@ -17,8 +17,6 @@ export default class PhysicsController extends cc.Component {
     this.physicsManager = cc.director.getPhysicsManager();
     this.physicsManager.enabled = true;
     this.physicsManager.gravity = cc.v2(0, -1500);
-    const Bits = cc.PhysicsManager.DrawBits;
-    this.physicsManager.debugDrawFlags = Bits.e_shapeBit;
 
     this.collisionManager = cc.director.getCollisionManager();
     this.collisionManager.enabled = true;
