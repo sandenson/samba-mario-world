@@ -11,6 +11,8 @@ const { ccclass } = cc._decorator;
 
 @ccclass
 export default abstract class Character extends cc.Component {
+  public canMove = true;
+
   protected _isJumping = false;
 
   public get isJumping(): boolean {

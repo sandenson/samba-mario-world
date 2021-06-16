@@ -3,7 +3,7 @@
   "_name": "super_skid",
   "_objFlags": 0,
   "_native": "",
-  "_duration": 0.03333333333333333,
+  "_duration": 0.06666666666666667,
   "sample": 30,
   "speed": 0.5,
   "wrapMode": 2,
@@ -16,10 +16,24 @@
             "value": {
               "__uuid__": "c0742bb7-2aa1-40b0-a928-0a4254e0f180"
             }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "c0742bb7-2aa1-40b0-a928-0a4254e0f180"
+            }
           }
         ]
       }
     }
   },
-  "events": []
+  "events": [
+    {
+      "frame": 0.03333333333333333,
+      "func": "onAnimationEnd",
+      "params": [
+        "skid"
+      ]
+    }
+  ]
 }

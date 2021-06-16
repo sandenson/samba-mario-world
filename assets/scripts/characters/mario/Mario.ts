@@ -10,11 +10,11 @@ import DIRECTION, { DIRECTIONS } from '../DIRECTION';
 import MARIO_STATES from './MARIO_STATES';
 import MOVEMENT_TYPE from './MOVEMENT_TYPE';
 
-const { ccclass, property } = cc._decorator;
+const { ccclass } = cc._decorator;
 
 @ccclass
 export default class Mario extends Character {
-  public jumpForce = 7500;
+  public jumpForce = 3000;
 
   public moveForce = 500;
 
@@ -23,18 +23,6 @@ export default class Mario extends Character {
   public walkingMaxSpeed = 200;
 
   private _runHoldDown = false;
-
-  @property(cc.SpriteFrame)
-  public climbingSprite1: cc.SpriteFrame = null;
-
-  @property(cc.SpriteFrame)
-  public climbingSprite2: cc.SpriteFrame = null;
-
-  @property(cc.SpriteFrame)
-  public climbingSpriteSuper1: cc.SpriteFrame = null;
-
-  @property(cc.SpriteFrame)
-  public climbingSpriteSuper2: cc.SpriteFrame = null;
 
   public get runHoldDown(): boolean {
     return this._runHoldDown;
@@ -49,6 +37,8 @@ export default class Mario extends Character {
     }
   }
 
+  public stateReset = false;
+
   private _isSuper = false;
 
   public get isSuper(): boolean {
@@ -57,6 +47,9 @@ export default class Mario extends Character {
 
   public set isSuper(value: boolean) {
     this._isSuper = value;
+    this.canMove = false;
+    this.rigidBody.linearVelocity = cc.v2(0, 0);
+    this.getComponent(cc.Animation).play('grow_up');
   }
 
   private _isHolding = false;
@@ -156,10 +149,10 @@ export default class Mario extends Character {
       } else if (this.state === MARIO_STATES.moving) {
         switch (this.movementType) {
           case MOVEMENT_TYPE.running:
-            animationName = 'run';
+            animationName += 'run';
             break;
           default:
-            animationName = 'walk';
+            animationName += 'walk';
             break;
         }
       } else {
@@ -167,8 +160,8 @@ export default class Mario extends Character {
       }
 
       if (this.state !== MARIO_STATES.moving) {
-        this.getComponent(cc.Animation).play(animationName);
-      } else {
+        if (this.canMove) this.getComponent(cc.Animation).play(animationName);
+      } else if (this.canMove) {
         const anim = this.getComponent(cc.Animation).play(animationName);
 
         if (this.movementType === MOVEMENT_TYPE.walking) anim.speed = 0.4;
@@ -210,17 +203,19 @@ export default class Mario extends Character {
   }
 
   public move(direction: DIRECTION): void {
-    if (this.state !== MARIO_STATES.ducking) {
-      this.movePlayer(direction);
-      if (direction.x !== 0 && direction !== this.facing) {
-        this.turnAround(direction);
-      } else if (
-        !this.isJumping &&
-        this.state !== MARIO_STATES.skidding &&
-        this.state !== MARIO_STATES.falling &&
-        this.state !== MARIO_STATES.climbingVines
-      ) {
-        this.state = MARIO_STATES.moving;
+    if (this.canMove) {
+      if (this.state !== MARIO_STATES.ducking) {
+        this.movePlayer(direction);
+        if (direction.x !== 0 && direction !== this.facing) {
+          this.turnAround(direction);
+        } else if (
+          !this.isJumping &&
+          this.state !== MARIO_STATES.skidding &&
+          this.state !== MARIO_STATES.falling &&
+          this.state !== MARIO_STATES.climbingVines
+        ) {
+          this.state = MARIO_STATES.moving;
+        }
       }
     }
   }
@@ -286,10 +281,15 @@ export default class Mario extends Character {
     if (self.tag === 2 && this.isClimbingVines) {
       this.isClimbingVines = false;
     }
+    if (other.tag === 666) this.node.destroy();
   }
 
   private onCollisionEnter(other: cc.Collider, self: cc.Collider) {
     if (other.tag === 111) this.vinesContact = true;
+    if (other.tag === 333) {
+      this.isSuper = true;
+      other.node.destroy();
+    }
   }
 
   private onCollisionExit(other: cc.Collider, self: cc.Collider) {

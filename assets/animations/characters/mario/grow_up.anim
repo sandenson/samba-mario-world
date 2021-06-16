@@ -5,7 +5,7 @@
   "_native": "",
   "_duration": 0.43333333333333335,
   "sample": 30,
-  "speed": 0.5,
+  "speed": 0.25,
   "wrapMode": 1,
   "curveData": {
     "comps": {
@@ -90,8 +90,36 @@
             }
           }
         ]
+      },
+      "cc.BoxCollider": {
+        "size": [
+          {
+            "frame": 0,
+            "value": {
+              "__type__": "cc.Size",
+              "width": 14,
+              "height": 20
+            }
+          },
+          {
+            "frame": 0.4,
+            "value": {
+              "__type__": "cc.Size",
+              "width": 15,
+              "height": 28
+            }
+          }
+        ]
       }
     }
   },
-  "events": []
+  "events": [
+    {
+      "frame": 0.4,
+      "func": "onAnimationEnd",
+      "params": [
+        "grow_up"
+      ]
+    }
+  ]
 }

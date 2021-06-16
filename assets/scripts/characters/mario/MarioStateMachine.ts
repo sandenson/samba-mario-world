@@ -20,14 +20,16 @@ export default class MarioStateMachine extends StateMachine<MARIO_STATES, Mario>
   }
 
   public onAnimationEnd(name: string): void {
-    switch (name) {
-      case 'skid':
-        this.node.scaleX *= -1;
-        this.actor.state = MARIO_STATES.moving;
-        break;
-
-      default:
-        break;
+    if (name === 'grow_up') {
+      const stateAux = this.actor.state;
+      this.actor.stateReset = true;
+      this.actor.state = stateAux;
+      this.actor.canMove = true;
+      this.actor.stateReset = false;
+    }
+    if (name === 'skid') {
+      this.node.scaleX *= -1;
+      this.actor.state = MARIO_STATES.moving;
     }
   }
 
