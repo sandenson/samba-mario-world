@@ -26,6 +26,7 @@ export default class MarioStateMachine extends StateMachine<MARIO_STATES, Mario>
       this.actor.state = stateAux;
       this.actor.canMove = true;
       this.actor.stateReset = false;
+      this.actor.rigidBody.gravityScale = 1;
     }
     if (name === 'skid') {
       this.node.scaleX *= -1;

@@ -48,6 +48,7 @@ export default class Mario extends Character {
   public set isSuper(value: boolean) {
     this._isSuper = value;
     this.canMove = false;
+    this.rigidBody.gravityScale = 0;
     this.rigidBody.linearVelocity = cc.v2(0, 0);
     this.getComponent(cc.Animation).play('grow_up');
   }
