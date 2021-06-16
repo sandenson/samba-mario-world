@@ -40,18 +40,37 @@ export default class Mario extends Character implements IDyingCharacter {
     }
   }
 
-  public stateReset = false;
+  private _isImmortal = false;
 
-  private _isSuper = false;
+  public get isImmortal(): boolean {
+    return this._isImmortal;
+  }
+
+  // for now, this setter is pretty much useless, but it'll be needed later
+  public set isImmortal(value: boolean) {
+    if (value !== this.isImmortal) {
+      this._isImmortal = value;
+    }
+  }
+
+  private _isSuper = true;
 
   public get isSuper(): boolean {
     return this._isSuper;
   }
 
   public set isSuper(value: boolean) {
-    this._isSuper = value;
-    this.canMove = false;
-    this.state = MARIO_STATES.growingUp;
+    if (value !== this.isSuper) {
+      this._isSuper = value;
+
+      if (this.isSuper) {
+        this.canMove = false;
+        this.state = MARIO_STATES.growingUp;
+      } else {
+        this.canMove = false;
+        this.state = MARIO_STATES.growingDown;
+      }
+    }
   }
 
   private _isHolding = false;
@@ -157,15 +176,23 @@ export default class Mario extends Character implements IDyingCharacter {
             animationName += 'walk';
             break;
         }
-      } else if (this.state === MARIO_STATES.dying || this.state === MARIO_STATES.growingUp) {
+      } else if (
+        this.state === MARIO_STATES.dying ||
+        this.state === MARIO_STATES.growingUp ||
+        this.state === MARIO_STATES.growingDown
+      ) {
         animationName = this.state;
-        this.stateReset = false;
       } else {
         animationName += this.state;
       }
 
       if (this.state !== MARIO_STATES.moving) {
-        if (this.canMove || this.state === MARIO_STATES.dying || this.state === MARIO_STATES.growingUp)
+        if (
+          this.canMove ||
+          this.state === MARIO_STATES.dying ||
+          this.state === MARIO_STATES.growingUp ||
+          this.state === MARIO_STATES.growingDown
+        )
           this.animationComponent.play(animationName);
       } else if (this.canMove) {
         const anim = this.animationComponent.play(animationName);
@@ -296,7 +323,13 @@ export default class Mario extends Character implements IDyingCharacter {
       this.isClimbingVines = false;
     }
     if (other.tag === 6666) this.node.destroy();
-    if (other.tag === 666) this.die();
+    if (other.tag === 666) {
+      if (!this.isSuper && !this.isImmortal) this.die();
+      else {
+        this.isSuper = false;
+        this.isImmortal = true;
+      }
+    }
   }
 
   private onCollisionEnter(other: cc.Collider, self: cc.Collider) {

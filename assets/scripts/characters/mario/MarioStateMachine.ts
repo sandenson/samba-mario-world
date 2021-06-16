@@ -42,11 +42,63 @@ export default class MarioStateMachine extends StateMachine<MARIO_STATES, Mario>
 
   public onAnimationEnd(name: string): void {
     if (name === 'grow_up') {
-      const stateAux = this.actor.state;
-      this.actor.stateReset = true;
-      this.actor.state = stateAux;
       this.actor.canMove = true;
-      this.actor.stateReset = false;
+    }
+    if (name === 'grow_down') {
+      this.actor.canMove = true;
+
+      cc.tween(this.node)
+        .call(() => {
+          this.node.opacity = 0;
+        })
+        .delay(0.133)
+        .call(() => {
+          this.node.opacity = 255;
+        })
+        .delay(0.133)
+        .call(() => {
+          this.node.opacity = 0;
+        })
+        .delay(0.133)
+        .call(() => {
+          this.node.opacity = 255;
+        })
+        .repeat(
+          4,
+          cc
+            .tween()
+            .delay(0.066)
+            .call(() => {
+              this.node.opacity = 0;
+            })
+            .delay(0.066)
+            .call(() => {
+              this.node.opacity = 255;
+            })
+        )
+        .repeat(
+          7,
+          cc
+            .tween()
+            .delay(0.033)
+            .call(() => {
+              this.node.opacity = 0;
+            })
+            .delay(0.033)
+            .call(() => {
+              this.node.opacity = 255;
+            })
+        )
+        .delay(0.033)
+        .call(() => {
+          this.node.opacity = 0;
+        })
+        .delay(0.133)
+        .call(() => {
+          this.node.opacity = 255;
+          this.actor.isImmortal = false;
+        })
+        .start();
     }
     if (name === 'skid') {
       this.node.scaleX *= -1;

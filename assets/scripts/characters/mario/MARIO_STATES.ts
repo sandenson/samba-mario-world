@@ -13,6 +13,7 @@ enum MARIO_STATES {
   kickingShell = 'kick_shell',
   dying = 'death',
   growingUp = 'grow_up',
+  growingDown = 'grow_down',
 }
 
 export default MARIO_STATES;

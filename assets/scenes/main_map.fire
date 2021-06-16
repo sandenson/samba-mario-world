@@ -250,7 +250,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        203.441,
+        1497.899,
         0.593,
         0,
         0,
@@ -378,7 +378,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": {
       "__id__": 2
     },
@@ -392,7 +392,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        139.579,
+        1451.53,
         -60.675,
         0,
         0,
