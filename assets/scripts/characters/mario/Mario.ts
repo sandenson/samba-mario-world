@@ -17,13 +17,15 @@ const { ccclass } = cc._decorator;
 export default class Mario extends Character implements IDyingCharacter {
   private isAlive = true;
 
-  public jumpForce = 9000;
+  public jumpForce = 6000;
 
-  public moveForce = 600;
+  public moveForce = 333;
 
-  public maxSpeed = 200;
+  public walkingMoveForce = 333;
 
-  public walkingMaxSpeed = 200;
+  public maxSpeed = 100;
+
+  public walkingMaxSpeed = 100;
 
   private _runHoldDown = false;
 
@@ -37,7 +39,10 @@ export default class Mario extends Character implements IDyingCharacter {
 
       if (!this.runHoldDown) {
         this.maxSpeed = this.walkingMaxSpeed;
-      } else this.maxSpeed = this.walkingMaxSpeed * 2;
+        this.moveForce = this.walkingMoveForce;
+      } else {
+        this.maxSpeed = this.walkingMaxSpeed * 2;
+      }
     }
   }
 
@@ -94,11 +99,22 @@ export default class Mario extends Character implements IDyingCharacter {
 
   public set movementType(value: MOVEMENT_TYPE) {
     if (this.fromUpdate && this.movementType !== value) {
+      if (this.movementType === MOVEMENT_TYPE.intermediate && this.runHoldDown) this.moveForce *= 0.7;
+
+      if (this.movementType === MOVEMENT_TYPE.intermediate && !this.runHoldDown) this.moveForce = this.walkingMoveForce;
+
+      if (this.movementType !== MOVEMENT_TYPE.intermediate) this.moveForce = this.walkingMoveForce;
+
       this._movementType = value;
+
+      // eslint-disable-next-line no-console
+      console.log(value);
 
       this.state = MARIO_STATES.moving;
     }
   }
+
+  // mudar fricção
 
   private _vinesContact = false;
 
@@ -218,14 +234,14 @@ export default class Mario extends Character implements IDyingCharacter {
 
       switch (this.onGround) {
         case false:
-          this.moveForce /= 2;
-          this.maxSpeed /= 2;
+          this.moveForce /= 1.5;
+          this.maxSpeed /= 1.5;
           break;
         case true:
           this.state = MARIO_STATES.idle;
 
-          this.moveForce *= 2;
-          this.maxSpeed *= 2;
+          this.moveForce *= 1.5;
+          this.maxSpeed *= 1.5;
           break;
         default:
           break;
@@ -341,11 +357,10 @@ export default class Mario extends Character implements IDyingCharacter {
   }
 
   private onBeginContact(contact: cc.PhysicsContact, self: cc.Collider, other: cc.Collider) {
-    if (self.tag === 2 && this.isJumping) {
-      this.isJumping = false;
-    }
-    if (self.tag === 2 && this.isClimbingVines) {
-      this.isClimbingVines = false;
+    if (self.tag === 2) {
+      if (this.isJumping) this.isJumping = false;
+      if (this.isClimbingVines) this.isClimbingVines = false;
+      this.onGround = true;
     }
     if (other.tag === 6666) {
       this.node.destroy();
@@ -357,7 +372,6 @@ export default class Mario extends Character implements IDyingCharacter {
         this.isImmortal = true;
       }
     }
-    this.onGround = true;
   }
 
   private onEndContact(contact: cc.PhysicsContact, self: cc.Collider, other: cc.Collider) {
