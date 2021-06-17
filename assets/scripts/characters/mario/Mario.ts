@@ -17,11 +17,11 @@ const { ccclass } = cc._decorator;
 export default class Mario extends Character implements IDyingCharacter {
   private isAlive = true;
 
-  public jumpForce = 3000;
+  public jumpForce = 9000;
 
-  public moveForce = 500;
+  public moveForce = 600;
 
-  public maxSpeed = 600;
+  public maxSpeed = 200;
 
   public walkingMaxSpeed = 200;
 
@@ -208,6 +208,33 @@ export default class Mario extends Character implements IDyingCharacter {
     }
   }
 
+  public _onGround = true;
+
+  public get onGround(): boolean {
+    return this._onGround;
+  }
+
+  public set onGround(value: boolean) {
+    if (this.onGround !== value) {
+      this._onGround = value;
+
+      switch (this.onGround) {
+        case false:
+          this.moveForce /= 2;
+          this.maxSpeed /= 2;
+          break;
+        case true:
+          this.state = MARIO_STATES.idle;
+
+          this.moveForce *= 2;
+          this.maxSpeed *= 2;
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
   protected _isJumping = false;
 
   public get isJumping(): boolean {
@@ -217,7 +244,7 @@ export default class Mario extends Character implements IDyingCharacter {
   public set isJumping(value: boolean) {
     this._isJumping = value;
 
-    if (!this.isJumping) this.state = MARIO_STATES.idle;
+    this.onGround = !this.isJumping;
   }
 
   private _climbingBool = false;
@@ -245,7 +272,8 @@ export default class Mario extends Character implements IDyingCharacter {
           !this.isJumping &&
           this.state !== MARIO_STATES.skidding &&
           this.state !== MARIO_STATES.falling &&
-          this.state !== MARIO_STATES.climbingVines
+          this.state !== MARIO_STATES.climbingVines &&
+          this.state !== MARIO_STATES.moving
         ) {
           this.state = MARIO_STATES.moving;
         }
@@ -256,7 +284,8 @@ export default class Mario extends Character implements IDyingCharacter {
   private movePlayer(direction: DIRECTION) {
     if (Math.abs(this.rigidBody.linearVelocity.x) < this.maxSpeed && !this.isClimbingVines) {
       this.rigidBody.applyForceToCenter(cc.v2(direction.x * this.moveForce, 0), true);
-    } else {
+    }
+    if (this.isClimbingVines) {
       this.climbingBool = true;
       this.rigidBody.linearVelocity = cc.v2(direction.x * 75, direction.y * 75);
     }
@@ -265,7 +294,9 @@ export default class Mario extends Character implements IDyingCharacter {
   private turnAround(direction: DIRECTION) {
     this.facing = direction;
     if (this.state === MARIO_STATES.moving) this.state = MARIO_STATES.skidding;
-    else this.node.scaleX *= -1;
+    else {
+      this.node.scaleX = direction.x;
+    }
   }
 
   public jump(type: MARIO_STATES): void {
@@ -276,8 +307,6 @@ export default class Mario extends Character implements IDyingCharacter {
     ) {
       if (this.state !== MARIO_STATES.ducking) this.state = type;
       this.isJumping = true;
-      this.moveForce /= 1.5;
-      this.maxSpeed /= 1.5;
       this.rigidBody.applyForceToCenter(cc.v2(0, this.jumpForce), true);
     }
   }
@@ -316,13 +345,13 @@ export default class Mario extends Character implements IDyingCharacter {
   private onBeginContact(contact: cc.PhysicsContact, self: cc.Collider, other: cc.Collider) {
     if (self.tag === 2 && this.isJumping) {
       this.isJumping = false;
-      this.moveForce *= 1.5;
-      this.maxSpeed *= 1.5;
     }
     if (self.tag === 2 && this.isClimbingVines) {
       this.isClimbingVines = false;
     }
-    if (other.tag === 6666) this.node.destroy();
+    if (other.tag === 6666) {
+      this.node.destroy();
+    }
     if (other.tag === 666) {
       if (!this.isSuper && !this.isImmortal) this.die();
       else {
@@ -330,6 +359,11 @@ export default class Mario extends Character implements IDyingCharacter {
         this.isImmortal = true;
       }
     }
+    this.onGround = true;
+  }
+
+  private onEndContact(contact: cc.PhysicsContact, self: cc.Collider, other: cc.Collider) {
+    if (self.tag === 2 && (other.tag === 0 || other.tag === 2)) this.onGround = false;
   }
 
   private onCollisionEnter(other: cc.Collider, self: cc.Collider) {

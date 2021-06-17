@@ -14,7 +14,7 @@
   {
     "__type__": "cc.Node",
     "_name": "Mario",
-    "_objFlags": 0,
+    "_objFlags": 512,
     "_parent": null,
     "_children": [],
     "_active": true,
@@ -75,8 +75,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        170.306,
-        -60.675,
+        859.885,
+        -12.968,
         0,
         0,
         0,
@@ -280,7 +280,7 @@
       "__id__": 1
     },
     "_enabled": true,
-    "tag": 2,
+    "tag": 1,
     "_density": 1,
     "_sensor": false,
     "_friction": 1,
@@ -289,12 +289,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": -9
+      "y": 1
     },
     "_size": {
       "__type__": "cc.Size",
       "width": 14,
-      "height": 2
+      "height": 18
     },
     "_id": ""
   },

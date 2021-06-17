@@ -101,7 +101,7 @@ export default class MarioStateMachine extends StateMachine<MARIO_STATES, Mario>
         .start();
     }
     if (name === 'skid') {
-      this.node.scaleX *= -1;
+      this.node.scaleX = this.actor.facing.x;
       this.actor.state = MARIO_STATES.moving;
     }
   }
@@ -119,18 +119,21 @@ export default class MarioStateMachine extends StateMachine<MARIO_STATES, Mario>
       this.actor.state !== MARIO_STATES.ducking &&
       this.actor.state !== MARIO_STATES.lookingUp &&
       this.actor.state !== MARIO_STATES.skidding &&
+      this.actor.state !== MARIO_STATES.idle &&
       !this.actor.isClimbingVines
     ) {
       this.actor.state = MARIO_STATES.idle;
     }
 
     if (
+      !this.actor.onGround &&
       this.actor.rigidBody.linearVelocity.y < 0 &&
       this.actor.state !== MARIO_STATES.ducking &&
       this.actor.state !== MARIO_STATES.spinJump &&
       this.actor.state !== MARIO_STATES.climbingVines
-    )
+    ) {
       this.actor.state = MARIO_STATES.falling;
+    }
 
     if (
       this.actor.state !== MARIO_STATES.skidding &&
