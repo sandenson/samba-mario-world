@@ -14,7 +14,7 @@
   {
     "__type__": "cc.Node",
     "_name": "YoshisIsland2",
-    "_objFlags": 512,
+    "_objFlags": 0,
     "_parent": null,
     "_children": [
       {
@@ -27,17 +27,14 @@
         "__id__": 122
       },
       {
-        "__id__": 168
+        "__id__": 169
       },
       {
-        "__id__": 170
+        "__id__": 171
       }
     ],
     "_active": true,
     "_components": [
-      {
-        "__id__": 172
-      },
       {
         "__id__": 173
       },
@@ -76,10 +73,16 @@
       },
       {
         "__id__": 185
+      },
+      {
+        "__id__": 186
+      },
+      {
+        "__id__": 187
       }
     ],
     "_prefab": {
-      "__id__": 186
+      "__id__": 188
     },
     "_opacity": 255,
     "_color": {
@@ -3384,7 +3387,7 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 167
+      "__id__": 168
     },
     "_opacity": 255,
     "_color": {
@@ -4246,10 +4249,13 @@
       },
       {
         "__id__": 165
+      },
+      {
+        "__id__": 166
       }
     ],
     "_prefab": {
-      "__id__": 166
+      "__id__": 167
     },
     "_opacity": 255,
     "_color": {
@@ -4453,7 +4459,7 @@
       "__id__": 157
     },
     "_enabled": true,
-    "tag": 2,
+    "tag": 0,
     "_density": 1,
     "_sensor": false,
     "_friction": 1,
@@ -4462,12 +4468,12 @@
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
-      "y": 0.5
+      "y": 0
     },
     "_size": {
       "__type__": "cc.Size",
       "width": 16,
-      "height": 15
+      "height": 16
     },
     "_id": ""
   },
@@ -4495,6 +4501,32 @@
     "_enabled": true,
     "inactiveSpriteProperty": {
       "__uuid__": "f54f2fba-4680-41ba-875f-52aca11b87ff"
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PhysicsBoxCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 157
+    },
+    "_enabled": true,
+    "tag": 2,
+    "_density": 1,
+    "_sensor": false,
+    "_friction": 0.2,
+    "_restitution": 0,
+    "body": null,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": -7.5
+    },
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 14,
+      "height": 1
     },
     "_id": ""
   },
@@ -4528,7 +4560,7 @@
     },
     "_id": "",
     "_prefab": {
-      "__id__": 169
+      "__id__": 170
     },
     "_name": "Goal",
     "_active": true,
@@ -4558,7 +4590,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 168
+      "__id__": 169
     },
     "asset": {
       "__uuid__": "748e95bb-bb89-4bf5-84d9-bdeac5f02dd2"
@@ -4574,7 +4606,7 @@
     },
     "_id": "",
     "_prefab": {
-      "__id__": 171
+      "__id__": 172
     },
     "_name": "Checkpoint",
     "_active": true,
@@ -4604,7 +4636,7 @@
   {
     "__type__": "cc.PrefabInfo",
     "root": {
-      "__id__": 170
+      "__id__": 171
     },
     "asset": {
       "__uuid__": "e9d86d66-b5f1-4223-997e-e8fb630e735f"
@@ -5147,6 +5179,32 @@
         "y": -120.5
       }
     ],
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PhysicsBoxCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "tag": 0,
+    "_density": 1,
+    "_sensor": false,
+    "_friction": 0,
+    "_restitution": 0,
+    "body": null,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": -2554.6,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 11.8,
+      "height": 432
+    },
     "_id": ""
   },
   {

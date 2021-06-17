@@ -152,7 +152,7 @@ export default class MarioStateMachine extends StateMachine<MARIO_STATES, Mario>
     } else if (
       this.actor.state !== MARIO_STATES.skidding &&
       this.actor.movementType !== MOVEMENT_TYPE.intermediate &&
-      Math.abs(this.actor.rigidBody.linearVelocity.x) > this.actor.walkingMaxSpeed &&
+      Math.abs(this.actor.rigidBody.linearVelocity.x) > this.actor.walkingMaxSpeed * 1.05 &&
       Math.abs(this.actor.rigidBody.linearVelocity.x) < this.actor.walkingMaxSpeed * 1.5
     ) {
       this.actor.fromUpdate = true;

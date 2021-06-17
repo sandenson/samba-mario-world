@@ -35,8 +35,9 @@ export default class Mario extends Character implements IDyingCharacter {
     if (this.runHoldDown !== value) {
       this._runHoldDown = value;
 
-      if (!this.runHoldDown) this.maxSpeed = this.walkingMaxSpeed;
-      else this.maxSpeed = this.walkingMaxSpeed * 2;
+      if (!this.runHoldDown) {
+        this.maxSpeed = this.walkingMaxSpeed;
+      } else this.maxSpeed = this.walkingMaxSpeed * 2;
     }
   }
 
@@ -92,7 +93,7 @@ export default class Mario extends Character implements IDyingCharacter {
   }
 
   public set movementType(value: MOVEMENT_TYPE) {
-    if (this.runHoldDown && this.movementType !== value) {
+    if (this.fromUpdate && this.movementType !== value) {
       this._movementType = value;
 
       this.state = MARIO_STATES.moving;
@@ -143,10 +144,7 @@ export default class Mario extends Character implements IDyingCharacter {
   }
 
   public set state(value: MARIO_STATES) {
-    if (
-      this.state !== value ||
-      (this.state === value && this.state === MARIO_STATES.moving && this.runHoldDown && this.fromUpdate)
-    ) {
+    if (this.state !== value || (this.state === value && this.state === MARIO_STATES.moving && this.fromUpdate)) {
       this._state = value;
 
       let animationName = '';
