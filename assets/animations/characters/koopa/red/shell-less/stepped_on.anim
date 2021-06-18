@@ -1,0 +1,31 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "stepped_on",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.43333333333333335,
+  "sample": 30,
+  "speed": 0.5,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "df35eb07-d741-48c9-ba35-0007cd6eb60c"
+            }
+          },
+          {
+            "frame": 0.4,
+            "value": {
+              "__uuid__": "df35eb07-d741-48c9-ba35-0007cd6eb60c"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
