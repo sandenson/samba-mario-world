@@ -5,9 +5,6 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class RotatingBlock extends Block {
-  @property(cc.SpriteFrame)
-  public inactiveSpriteProperty: cc.SpriteFrame;
-
   private spawner: VinesHeadSpawner = null;
 
   private canRotate = true;

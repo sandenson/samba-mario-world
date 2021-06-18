@@ -3,7 +3,7 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default abstract class Block extends cc.Component {
   @property(cc.SpriteFrame)
-  public abstract inactiveSpriteProperty: cc.SpriteFrame = null;
+  public inactiveSpriteProperty: cc.SpriteFrame = null;
 
   protected _isActive = true;
 
@@ -15,6 +15,7 @@ export default abstract class Block extends cc.Component {
     if (value === false) {
       this._isActive = value;
 
+      if (this.getComponent(cc.Animation).isValid) this.getComponent(cc.Animation).stop();
       this.getComponent(cc.Sprite).spriteFrame = this.inactiveSpriteProperty;
     }
   }

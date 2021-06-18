@@ -13,8 +13,8 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "LuckyBlockCoin",
-    "_objFlags": 0,
+    "_name": "Coin",
+    "_objFlags": 512,
     "_parent": null,
     "_children": [],
     "_active": true,
@@ -24,10 +24,19 @@
       },
       {
         "__id__": 3
+      },
+      {
+        "__id__": 4
+      },
+      {
+        "__id__": 5
+      },
+      {
+        "__id__": 6
       }
     ],
     "_prefab": {
-      "__id__": 4
+      "__id__": 7
     },
     "_opacity": 255,
     "_color": {
@@ -39,7 +48,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 10,
+      "width": 12,
       "height": 16
     },
     "_anchorPoint": {
@@ -51,8 +60,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        212,
-        96,
+        -1320,
+        -111,
         0,
         0,
         0,
@@ -92,7 +101,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "a0c667da-0320-4bce-8f0f-0ea977f48f58"
+      "__uuid__": "c9b1f910-b1c4-48b4-8252-d4803aed1692"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -117,14 +126,70 @@
     },
     "_enabled": true,
     "_defaultClip": {
-      "__uuid__": "b0cb3b98-26eb-468d-a85a-01b6fd07da76"
+      "__uuid__": "9e2e832a-342b-4052-b164-ae7dbd422175"
     },
     "_clips": [
       {
-        "__uuid__": "b0cb3b98-26eb-468d-a85a-01b6fd07da76"
+        "__uuid__": "9e2e832a-342b-4052-b164-ae7dbd422175"
       }
     ],
     "playOnLoad": true,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.BoxCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "tag": 0,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 12,
+      "height": 16
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.RigidBody",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "_type": 2,
+    "_allowSleep": true,
+    "_gravityScale": 1,
+    "_linearDamping": 0,
+    "_angularDamping": 0,
+    "_linearVelocity": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_angularVelocity": 0,
+    "_fixedRotation": true,
+    "enabledContactListener": false,
+    "bullet": false,
+    "awakeOnLoad": true,
+    "_id": ""
+  },
+  {
+    "__type__": "3f96aRFQpJMG7tnQD7TX8M2",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
     "_id": ""
   },
   {
@@ -133,7 +198,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "fcbcac40-53c3-4b1c-ae41-7e16a957e539"
     },
     "fileId": "",
     "sync": false
