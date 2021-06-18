@@ -99,16 +99,13 @@ export default class Mario extends Character implements IDyingCharacter {
 
   public set movementType(value: MOVEMENT_TYPE) {
     if (this.fromUpdate && this.movementType !== value) {
+      this._movementType = value;
+
       if (this.movementType === MOVEMENT_TYPE.intermediate && this.runHoldDown) this.moveForce *= 0.7;
 
       if (this.movementType === MOVEMENT_TYPE.intermediate && !this.runHoldDown) this.moveForce = this.walkingMoveForce;
 
       if (this.movementType !== MOVEMENT_TYPE.intermediate) this.moveForce = this.walkingMoveForce;
-
-      this._movementType = value;
-
-      // eslint-disable-next-line no-console
-      console.log(value);
 
       this.state = MARIO_STATES.moving;
     }
@@ -231,6 +228,9 @@ export default class Mario extends Character implements IDyingCharacter {
   public set onGround(value: boolean) {
     if (this.onGround !== value) {
       this._onGround = value;
+
+      // eslint-disable-next-line no-console
+      console.log(value);
 
       switch (this.onGround) {
         case false:

@@ -158,5 +158,8 @@ export default class MarioStateMachine extends StateMachine<MARIO_STATES, Mario>
       this.actor.fromUpdate = true;
       this.actor.movementType = MOVEMENT_TYPE.intermediate;
     }
+
+    if (this.actor.isClimbingVines && this.actor.state !== MARIO_STATES.climbingVines)
+      this.actor.state = MARIO_STATES.climbingVines;
   }
 }
