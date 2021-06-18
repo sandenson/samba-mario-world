@@ -1,10 +1,3 @@
-// Learn TypeScript:
-//  - https://docs.cocos.com/creator/manual/en/scripting/typescript.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-
 import DIRECTION, { DIRECTIONS } from './DIRECTION';
 
 const { ccclass } = cc._decorator;
@@ -42,11 +35,11 @@ export default abstract class Character extends cc.Component {
 
   public facing: DIRECTION = DIRECTIONS.right;
 
-  public abstract jumpForce = 0;
+  public jumpForce = 0;
 
-  public abstract moveForce = 0;
+  public moveForce = 0;
 
-  public abstract maxSpeed = 0;
+  public maxSpeed = 0;
 
   public rigidBody: cc.RigidBody;
 
