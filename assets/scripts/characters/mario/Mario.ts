@@ -173,7 +173,7 @@ export default class Mario extends Character implements IDyingCharacter {
             break;
 
           default:
-            animationName = 'jump';
+            animationName += 'jump';
             break;
         }
       } else if (this.state === MARIO_STATES.jumping && this.isHolding) {
@@ -228,9 +228,6 @@ export default class Mario extends Character implements IDyingCharacter {
   public set onGround(value: boolean) {
     if (this.onGround !== value) {
       this._onGround = value;
-
-      // eslint-disable-next-line no-console
-      console.log(value);
 
       switch (this.onGround) {
         case false:

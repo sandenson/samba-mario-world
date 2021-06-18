@@ -30,7 +30,7 @@ export default class MarioStateMachine extends StateMachine<MARIO_STATES, Mario>
               // eslint-disable-next-line no-param-reassign
               element.enabled = false;
             });
-            this.actor.rigidBody.gravityScale = 0.3;
+            this.actor.rigidBody.gravityScale = 0.6;
             this.actor.rigidBody.linearVelocity = cc.v2(0, 300);
           })
           .delay(5)

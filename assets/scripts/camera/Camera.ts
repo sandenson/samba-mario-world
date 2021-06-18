@@ -28,11 +28,9 @@ export default class Camera extends cc.Component {
       const targetPosition = this.player.x;
 
       const boundaryX = this.node.parent.convertToWorldSpaceAR(this.boundary.getPosition()).x - this.boundary.width / 2;
+
       const finalBoundaryX =
         this.boundary.width + boundaryX - this.node.parent.convertToNodeSpaceAR(this.node.getPosition()).x / 6;
-      // const finalBoundaryX = this.boundary.width * this.boundary.scaleX - this.node.parent.width;
-      // eslint-disable-next-line no-console
-      // console.log(`${boundaryX} ${this.node.x}`);
 
       this.node.x = cc.misc.clampf(cc.misc.lerp(this.node.x, targetPosition, 0.5), boundaryX, finalBoundaryX);
     }
