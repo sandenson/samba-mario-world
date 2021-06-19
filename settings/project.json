@@ -1,9 +1,63 @@
 {
   "group-list": [
-    "default"
+    "default",
+    "Map",
+    "Items",
+    "Enemies",
+    "Mario",
+    "Koopa shells",
+    "P-Switch"
   ],
   "collision-matrix": [
     [
+      true
+    ],
+    [
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      false,
+      true,
+      true
+    ],
+    [
+      false,
+      true,
+      false,
+      true,
+      true,
+      true
+    ],
+    [
+      false,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      false,
+      true,
+      false,
+      true,
+      true,
+      true
+    ],
+    [
+      false,
+      true,
+      false,
+      false,
+      true,
+      false,
       true
     ]
   ],
