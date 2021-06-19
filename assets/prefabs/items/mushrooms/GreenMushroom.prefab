@@ -136,8 +136,8 @@
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 16,
-      "height": 16
+      "width": 17,
+      "height": 17
     },
     "_id": ""
   },
@@ -200,6 +200,7 @@
       "__id__": 1
     },
     "_enabled": true,
+    "value": null,
     "_id": ""
   },
   {

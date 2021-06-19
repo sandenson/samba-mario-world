@@ -1,9 +1,10 @@
-import DIRECTION, { DIRECTIONS } from '../../characters/DIRECTION';
+import DIRECTION, { DIRECTIONS } from '../../../characters/DIRECTION';
+import HealthItem from '../HealthItem';
 
 const { ccclass } = cc._decorator;
 
 @ccclass
-export default class Mushroom extends cc.Component {
+export default class Mushroom extends HealthItem {
   private canChangeDirection = false;
 
   private _facing: DIRECTION = null;
@@ -34,7 +35,7 @@ export default class Mushroom extends cc.Component {
       .call(() => {
         this.facing = DIRECTIONS.right;
       })
-      .delay(0.5)
+      .delay(0.3)
       .call(() => {
         this.canChangeDirection = true;
       })
