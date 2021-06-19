@@ -1,7 +1,10 @@
+// import Item from '../../Item';
+import CCoin from '../CCoin';
+
 const { ccclass } = cc._decorator;
 
 @ccclass
-export default class LuckyBlockCoin extends cc.Component {
+export default class LuckyBlockCoin extends CCoin {
   public start(): void {
     cc.tween(this.node)
       .call(() => {
