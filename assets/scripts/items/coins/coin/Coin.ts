@@ -10,7 +10,7 @@ export default class Coin extends CCoin {
   private _isBlock = false;
 
   private get isBlock(): boolean {
-    return this.isBlock;
+    return this._isBlock;
   }
 
   private set isBlock(value: boolean) {
@@ -25,9 +25,10 @@ export default class Coin extends CCoin {
         });
       } else {
         const block = cc.instantiate(this.inactiveBlock);
-        block.setPosition(cc.v2(this.node.getPosition().x, this.node.getPosition().y + 16));
 
         this.node.addChild(block);
+
+        block.setPosition(cc.v2(0, 0));
 
         this.getComponent(cc.Animation).pause();
       }
@@ -35,15 +36,10 @@ export default class Coin extends CCoin {
   }
 
   public toggleState(): void {
-    switch (this.isBlock) {
-      case true:
-        this.isBlock = false;
-        break;
-      case false:
-        this.isBlock = true;
-        break;
-      default:
-        break;
+    if (!this.isBlock) {
+      this.isBlock = true;
+    } else {
+      this.isBlock = false;
     }
   }
 }
