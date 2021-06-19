@@ -43,7 +43,7 @@ export default class Mushroom extends cc.Component {
 
   public onAnimationEnd(name: string): void {
     if (name === 'koopa_egg') {
-      this.getComponent(cc.Animation).play('green_idle');
+      this.getComponent(cc.Animation).play('idle');
       this.beginMovement();
     }
   }
