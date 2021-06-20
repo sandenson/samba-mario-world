@@ -28,6 +28,8 @@ export default class Coin extends CCoin {
 
         this.node.addChild(block);
 
+        block.setScale(cc.v2(1.1, 1.1));
+
         block.setPosition(cc.v2(0, 0));
 
         this.getComponent(cc.Animation).pause();

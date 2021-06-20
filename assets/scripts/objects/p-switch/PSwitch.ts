@@ -15,14 +15,15 @@ export default class PSwitch extends cc.Component {
 
   private effect(): void {
     cc.tween(this.node)
-      .call(() => {
-        this.coinsNode.children.forEach(element => {
-          element.getComponent(Coin).toggleState();
-        });
-      })
       .parallel(
         cc
           .tween()
+          .delay(0.1)
+          .call(() => {
+            this.coinsNode.children.forEach(element => {
+              element.getComponent(Coin).toggleState();
+            });
+          })
           .delay(10)
           .call(() => {
             this.coinsNode.children.forEach(element => {
@@ -33,10 +34,31 @@ export default class PSwitch extends cc.Component {
           }),
         cc
           .tween()
-          .delay(2)
+          .delay(1)
           .call(() => {
             this.node.opacity = 0;
-          })
+          }),
+        cc.tween().repeat(
+          9,
+          cc
+            .tween()
+            .delay(0.2 / 3)
+            .call(() => {
+              this.camera.node.y += 4;
+            })
+            .delay(0.2 / 3)
+            .call(() => {
+              this.camera.node.y -= 4;
+            })
+            .delay(0.2 / 3)
+            .call(() => {
+              this.camera.node.y += 4;
+            })
+            .delay(0.2 / 3)
+            .call(() => {
+              this.camera.node.y -= 4;
+            })
+        )
       )
       .start();
   }
