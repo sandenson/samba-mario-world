@@ -13,8 +13,8 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "RedMushroom",
-    "_objFlags": 0,
+    "_name": "Coin",
+    "_objFlags": 512,
     "_parent": null,
     "_children": [],
     "_active": true,
@@ -24,10 +24,16 @@
       },
       {
         "__id__": 3
+      },
+      {
+        "__id__": 4
+      },
+      {
+        "__id__": 5
       }
     ],
     "_prefab": {
-      "__id__": 4
+      "__id__": 6
     },
     "_opacity": 255,
     "_color": {
@@ -39,7 +45,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 16,
+      "width": 12,
       "height": 16
     },
     "_anchorPoint": {
@@ -51,8 +57,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        212,
-        96,
+        2008,
+        -130.5,
         0,
         0,
         0,
@@ -72,8 +78,8 @@
     "_skewX": 0,
     "_skewY": 0,
     "_is3DNode": false,
-    "_groupIndex": 0,
-    "groupIndex": 0,
+    "_groupIndex": 2,
+    "groupIndex": 2,
     "_id": ""
   },
   {
@@ -92,7 +98,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "49ffb1d9-a1de-4204-9afb-2783d64c8e40"
+      "__uuid__": "c9b1f910-b1c4-48b4-8252-d4803aed1692"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -109,6 +115,25 @@
     "_id": ""
   },
   {
+    "__type__": "cc.Animation",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "_defaultClip": {
+      "__uuid__": "9e2e832a-342b-4052-b164-ae7dbd422175"
+    },
+    "_clips": [
+      {
+        "__uuid__": "9e2e832a-342b-4052-b164-ae7dbd422175"
+      }
+    ],
+    "playOnLoad": true,
+    "_id": ""
+  },
+  {
     "__type__": "cc.BoxCollider",
     "_name": "",
     "_objFlags": 0,
@@ -116,7 +141,7 @@
       "__id__": 1
     },
     "_enabled": true,
-    "tag": 0,
+    "tag": 4,
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -124,8 +149,22 @@
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 16,
+      "width": 12,
       "height": 16
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "430d5zS6glKLb8z+0pHu0ki",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "value": 1,
+    "inactiveBlock": {
+      "__uuid__": "22c9606d-a4d3-4642-b497-d7fbf56e1f5f"
     },
     "_id": ""
   },
@@ -135,7 +174,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "8e734843-9e48-4608-a11e-80716d3ef33f"
     },
     "fileId": "",
     "sync": false

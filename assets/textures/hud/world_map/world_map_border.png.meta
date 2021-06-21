@@ -11,7 +11,7 @@
   "height": 256,
   "platformSettings": {},
   "subMetas": {
-    "SNES - Super Mario World - World Map Border": {
+    "world_map_border": {
       "ver": "1.0.4",
       "uuid": "5ec1f296-5b51-40a9-bc92-0526522b339c",
       "rawTextureUuid": "d873796f-c4e4-431c-9512-5ab0b59d2764",

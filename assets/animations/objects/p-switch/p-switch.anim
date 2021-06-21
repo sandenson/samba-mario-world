@@ -26,26 +26,15 @@
         ]
       },
       "cc.PhysicsBoxCollider": {
-        "size": [
-          {
-            "frame": 0,
-            "value": {
-              "__type__": "cc.Size",
-              "width": 16,
-              "height": 16
-            }
-          },
-          {
-            "frame": 0.03333333333333333,
-            "value": {
-              "__type__": "cc.Size",
-              "width": 16,
-              "height": 8
-            }
-          }
-        ]
+        "offset": []
       }
     }
   },
-  "events": []
+  "events": [
+    {
+      "frame": 0.03333333333333333,
+      "func": "onAnimationEnd",
+      "params": []
+    }
+  ]
 }

@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "YoshiCoin",
+    "_name": "Coin",
     "_objFlags": 512,
     "_parent": null,
     "_children": [],
@@ -27,10 +27,16 @@
       },
       {
         "__id__": 4
+      },
+      {
+        "__id__": 5
+      },
+      {
+        "__id__": 6
       }
     ],
     "_prefab": {
-      "__id__": 5
+      "__id__": 7
     },
     "_opacity": 255,
     "_color": {
@@ -42,8 +48,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 16,
-      "height": 25
+      "width": 12,
+      "height": 16
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -54,8 +60,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -1288,
-        -87,
+        -1320,
+        -111,
         0,
         0,
         0,
@@ -95,7 +101,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "7934e323-d454-4535-9a96-890d20db4a3c"
+      "__uuid__": "c9b1f910-b1c4-48b4-8252-d4803aed1692"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -120,11 +126,11 @@
     },
     "_enabled": true,
     "_defaultClip": {
-      "__uuid__": "cd509c27-61a2-44db-973a-1df5642d17b5"
+      "__uuid__": "9e2e832a-342b-4052-b164-ae7dbd422175"
     },
     "_clips": [
       {
-        "__uuid__": "cd509c27-61a2-44db-973a-1df5642d17b5"
+        "__uuid__": "9e2e832a-342b-4052-b164-ae7dbd422175"
       }
     ],
     "playOnLoad": true,
@@ -146,9 +152,44 @@
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 16,
-      "height": 25
+      "width": 12,
+      "height": 16
     },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.RigidBody",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "_type": 2,
+    "_allowSleep": true,
+    "_gravityScale": 1,
+    "_linearDamping": 0,
+    "_angularDamping": 0,
+    "_linearVelocity": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_angularVelocity": 0,
+    "_fixedRotation": true,
+    "enabledContactListener": false,
+    "bullet": false,
+    "awakeOnLoad": true,
+    "_id": ""
+  },
+  {
+    "__type__": "3f96aRFQpJMG7tnQD7TX8M2",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
     "_id": ""
   },
   {
@@ -157,7 +198,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "ed55a6c2-e0f6-4f49-9e7b-e44329ed3e24"
+      "__uuid__": "fcbcac40-53c3-4b1c-ae41-7e16a957e539"
     },
     "fileId": "",
     "sync": false
