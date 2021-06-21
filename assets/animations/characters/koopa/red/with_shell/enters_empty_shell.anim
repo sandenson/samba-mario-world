@@ -5,8 +5,8 @@
   "_native": "",
   "_duration": 0.2,
   "sample": 30,
-  "speed": 0.5,
-  "wrapMode": 1,
+  "speed": 0.4,
+  "wrapMode": 2,
   "curveData": {
     "comps": {
       "cc.Sprite": {

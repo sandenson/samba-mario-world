@@ -169,7 +169,7 @@
     "tag": 0,
     "_density": 1,
     "_sensor": false,
-    "_friction": 0.2,
+    "_friction": 0.5,
     "_restitution": 0,
     "body": null,
     "_offset": {
@@ -190,7 +190,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "7064b566-864c-4a37-b833-0374abfbab8b"
     },
     "fileId": "",
     "sync": false
