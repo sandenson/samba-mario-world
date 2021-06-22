@@ -3,12 +3,12 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default class LevelHUD extends cc.Component {
   @property(cc.Label)
-  public timerLabel: cc.Label = null;
+  private timerLabel: cc.Label = null;
 
   private remainingTime = 400;
 
   @property(cc.Label)
-  public livesLabel: cc.Label = null;
+  private livesLabel: cc.Label = null;
 
   private lives = 5;
 
@@ -19,10 +19,10 @@ export default class LevelHUD extends cc.Component {
   }
 
   @property(cc.Label)
-  public yoshiCoinsLabel: cc.Label = null;
+  private yoshiCoinsLabel: cc.Label = null;
 
   @property(cc.Node)
-  public yoshiCoinsNode: cc.Node = null;
+  private yoshiCoinsNode: cc.Node = null;
 
   private nYoshiCoins = 0;
 
@@ -37,10 +37,10 @@ export default class LevelHUD extends cc.Component {
   }
 
   @property(cc.Label)
-  public starsLabel: cc.Label = null;
+  private starsLabel: cc.Label = null;
 
   @property(cc.Label)
-  public coinsLabel: cc.Label = null;
+  private coinsLabel: cc.Label = null;
 
   private coins = 0;
 
@@ -55,7 +55,7 @@ export default class LevelHUD extends cc.Component {
   }
 
   @property(cc.Label)
-  public pointsLabel: cc.Label = null;
+  private pointsLabel: cc.Label = null;
 
   private _points = 0;
 

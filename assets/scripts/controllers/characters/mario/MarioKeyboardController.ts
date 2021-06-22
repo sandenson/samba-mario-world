@@ -2,6 +2,7 @@ import { DIRECTIONS } from '../../../characters/DIRECTION';
 import Mario from '../../../characters/mario/Mario';
 import MARIO_STATES from '../../../characters/mario/MARIO_STATES';
 import KeyboardController from '../../KeyboardController';
+import LevelController from '../../LevelController';
 
 const { ccclass } = cc._decorator;
 
@@ -38,6 +39,9 @@ export default class MarioKeyboardController extends KeyboardController {
       case cc.macro.KEY.up:
         // eslint-disable-next-line dot-notation
         this.pressedKeys['UP'] = true;
+        break;
+      case cc.macro.KEY.escape:
+        cc.find('Canvas/LevelController').getComponent(LevelController).pauseGame();
         break;
       default:
         break;
