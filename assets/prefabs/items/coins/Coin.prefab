@@ -57,8 +57,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        2008,
-        -130.5,
+        -1272,
+        -95,
         0,
         0,
         0,
@@ -162,7 +162,7 @@
       "__id__": 1
     },
     "_enabled": true,
-    "value": 1,
+    "value": 10,
     "inactiveBlock": {
       "__uuid__": "22c9606d-a4d3-4642-b497-d7fbf56e1f5f"
     },

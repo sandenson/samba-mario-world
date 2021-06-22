@@ -1,3 +1,7 @@
+import LevelHUD from '../../hud/LevelHUD';
+import CCoin from '../../items/coins/CCoin';
+import YoshiCoin from '../../items/coins/yoshi_coin/YoshiCoin';
+import HealthItem from '../../items/health_items/HealthItem';
 import Character from '../Character';
 import DIRECTION, { DIRECTIONS } from '../DIRECTION';
 import IDyingCharacter from '../IDyingCharacter';
@@ -346,6 +350,22 @@ export default class Mario extends Character implements IDyingCharacter {
     }
   }
 
+  private itemsHandler(itemCollider: cc.Collider) {
+    const levelHUD = cc.find('Canvas/Main Camera/LevelHUD').getComponent(LevelHUD);
+
+    if (itemCollider.getComponent(CCoin) !== null) {
+      if (itemCollider.getComponent(YoshiCoin) !== null) {
+        levelHUD.points = itemCollider.getComponent(CCoin).value;
+        levelHUD.incrementYoshiCoins();
+      } else {
+        levelHUD.points = itemCollider.getComponent(CCoin).value;
+        levelHUD.incrementCoins();
+      }
+    }
+
+    if (itemCollider.getComponent(HealthItem) !== null) levelHUD.incrementLives();
+  }
+
   private onBeginContact(contact: cc.PhysicsContact, self: cc.Collider, other: cc.Collider) {
     if (self.tag === 2) {
       if (this.isJumping) this.isJumping = false;
@@ -374,6 +394,7 @@ export default class Mario extends Character implements IDyingCharacter {
       this.isSuper = true;
       other.node.destroy();
     }
+    if (other.tag === 4) this.itemsHandler(other);
   }
 
   private onCollisionExit(other: cc.Collider, self: cc.Collider) {
