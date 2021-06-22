@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Coin",
+    "_name": "YoshiCoin",
     "_objFlags": 512,
     "_parent": null,
     "_children": [],
@@ -27,10 +27,13 @@
       },
       {
         "__id__": 4
+      },
+      {
+        "__id__": 5
       }
     ],
     "_prefab": {
-      "__id__": 5
+      "__id__": 6
     },
     "_opacity": 255,
     "_color": {
@@ -42,8 +45,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 12,
-      "height": 16
+      "width": 16,
+      "height": 25
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -54,8 +57,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -1320,
-        -111,
+        -1288,
+        -87,
         0,
         0,
         0,
@@ -75,8 +78,8 @@
     "_skewX": 0,
     "_skewY": 0,
     "_is3DNode": false,
-    "_groupIndex": 0,
-    "groupIndex": 0,
+    "_groupIndex": 2,
+    "groupIndex": 2,
     "_id": ""
   },
   {
@@ -95,7 +98,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "c9b1f910-b1c4-48b4-8252-d4803aed1692"
+      "__uuid__": "7934e323-d454-4535-9a96-890d20db4a3c"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -120,11 +123,11 @@
     },
     "_enabled": true,
     "_defaultClip": {
-      "__uuid__": "9e2e832a-342b-4052-b164-ae7dbd422175"
+      "__uuid__": "cd509c27-61a2-44db-973a-1df5642d17b5"
     },
     "_clips": [
       {
-        "__uuid__": "9e2e832a-342b-4052-b164-ae7dbd422175"
+        "__uuid__": "cd509c27-61a2-44db-973a-1df5642d17b5"
       }
     ],
     "playOnLoad": true,
@@ -138,7 +141,7 @@
       "__id__": 1
     },
     "_enabled": true,
-    "tag": 0,
+    "tag": 4,
     "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
@@ -146,9 +149,20 @@
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 12,
-      "height": 16
+      "width": 16,
+      "height": 25
     },
+    "_id": ""
+  },
+  {
+    "__type__": "74feb6JVHRM/ayUEVOITc3g",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "value": 1000,
     "_id": ""
   },
   {
@@ -157,7 +171,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "8e734843-9e48-4608-a11e-80716d3ef33f"
+      "__uuid__": "ed55a6c2-e0f6-4f49-9e7b-e44329ed3e24"
     },
     "fileId": "",
     "sync": false

@@ -13,8 +13,8 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "YoshiCoin",
-    "_objFlags": 512,
+    "_name": "RedMushroom",
+    "_objFlags": 0,
     "_parent": null,
     "_children": [],
     "_active": true,
@@ -27,10 +27,16 @@
       },
       {
         "__id__": 4
+      },
+      {
+        "__id__": 5
+      },
+      {
+        "__id__": 6
       }
     ],
     "_prefab": {
-      "__id__": 5
+      "__id__": 7
     },
     "_opacity": 255,
     "_color": {
@@ -43,7 +49,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 16,
-      "height": 25
+      "height": 16
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -54,8 +60,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -1288,
-        -87,
+        212,
+        96,
         0,
         0,
         0,
@@ -75,8 +81,8 @@
     "_skewX": 0,
     "_skewY": 0,
     "_is3DNode": false,
-    "_groupIndex": 0,
-    "groupIndex": 0,
+    "_groupIndex": 2,
+    "groupIndex": 2,
     "_id": ""
   },
   {
@@ -95,7 +101,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "7934e323-d454-4535-9a96-890d20db4a3c"
+      "__uuid__": "49ffb1d9-a1de-4204-9afb-2783d64c8e40"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -109,25 +115,6 @@
     "_fillRange": 0,
     "_isTrimmedMode": true,
     "_atlas": null,
-    "_id": ""
-  },
-  {
-    "__type__": "cc.Animation",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "_defaultClip": {
-      "__uuid__": "cd509c27-61a2-44db-973a-1df5642d17b5"
-    },
-    "_clips": [
-      {
-        "__uuid__": "cd509c27-61a2-44db-973a-1df5642d17b5"
-      }
-    ],
-    "playOnLoad": true,
     "_id": ""
   },
   {
@@ -147,8 +134,69 @@
     "_size": {
       "__type__": "cc.Size",
       "width": 16,
-      "height": 25
+      "height": 16
     },
+    "_id": ""
+  },
+  {
+    "__type__": "cc.RigidBody",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "_type": 2,
+    "_allowSleep": true,
+    "_gravityScale": 1,
+    "_linearDamping": 0,
+    "_angularDamping": 0,
+    "_linearVelocity": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_angularVelocity": 0,
+    "_fixedRotation": true,
+    "enabledContactListener": true,
+    "bullet": false,
+    "awakeOnLoad": true,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PhysicsBoxCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "tag": 3,
+    "_density": 1,
+    "_sensor": false,
+    "_friction": 0,
+    "_restitution": 0,
+    "body": null,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 16,
+      "height": 16
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "0ad9cnQu7JGiL3nL+Bpbx+1",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
     "_id": ""
   },
   {
@@ -157,7 +205,7 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "ed55a6c2-e0f6-4f49-9e7b-e44329ed3e24"
+      "__uuid__": "11eace93-9bd0-4472-9bef-6d30f00cd4f8"
     },
     "fileId": "",
     "sync": false
